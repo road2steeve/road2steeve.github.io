@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ushuaïa, plage et soleil : notre virée à Ibiza — Les évadés du van</title>
+<meta name="description" content="Trois jours à Ibiza : marché hippie, plages secrètes, Formentera et une soirée mémorable à Ushuaïa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#24322a;
+    --paper:#eee7d6;
+    --paper-2:#e4dcc6;
+    --rust:#a8471f;
+    --rust-dark:#7d3417;
+    --moss:#4f6b52;
+    --gold:#c0922f;
+    --line: rgba(36,50,42,0.18);
+    --max: 760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image: radial-gradient(circle at 1px 1px, rgba(36,50,42,0.07) 1px, transparent 0);
+    background-size: 22px 22px;
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.65;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* nav */
+  nav{
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .back{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    color:var(--rust-dark);
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:15px;
+    color:var(--moss);
+    text-decoration:none;
+  }
+
+  /* header */
+  .article-head{padding:64px 0 40px;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rust-dark);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{ content:""; width:26px; height:1px; background:var(--rust-dark); display:inline-block; }
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size: clamp(36px, 6vw, 56px);
+    line-height:1.04;
+    margin:0 0 20px;
+    letter-spacing:-0.01em;
+  }
+  h1.title em{ font-style:italic; font-weight:400; color:var(--rust); }
+  .meta-row{
+    display:flex; gap:18px; flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    color:var(--moss);
+  }
+  .tag{ padding:2px 8px; border:1px solid var(--moss); border-radius:20px; }
+
+  .cover{
+    width:100%;
+    border-radius:2px;
+    margin:36px 0 8px;
+    display:block;
+    border:1px solid var(--line);
+  }
+  figcaption{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:#6b6a58;
+    text-align:right;
+    margin-bottom:36px;
+  }
+
+  /* day sections */
+  .day{ padding:48px 0; border-top:1px dashed var(--line); }
+  .day:first-of-type{ border-top:none; }
+  .day-num{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:34px; height:34px; border-radius:50%;
+    border:2px solid var(--rust);
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; color:var(--rust);
+    margin-bottom:16px;
+  }
+  .day h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:26px;
+    margin:0 0 20px;
+  }
+  .day p{ margin:0 0 18px; color:#3a453e; font-size:16.5px; }
+
+  .photo-row{
+    display:grid;
+    gap:12px;
+    margin: 28px 0;
+  }
+  .photo-row.two{ grid-template-columns:1fr 1fr; }
+  .photo-row img, .photo-row video{
+    width:100%; height:100%; object-fit:cover;
+    border-radius:2px; border:1px solid var(--line);
+    display:block;
+  }
+  .photo-single img, .photo-single video{
+    width:100%; border-radius:2px; border:1px solid var(--line); display:block;
+  }
+  .photo-single{ margin:28px 0; }
+
+  @media (max-width:600px){
+    .photo-row.two{ grid-template-columns:1fr; }
+  }
+
+  .pull-note{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:19px;
+    color:var(--rust-dark);
+    border-left:2px solid var(--rust);
+    padding-left:18px;
+    margin:32px 0;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:34px 0 50px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:#6b6a58;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    margin-top:20px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; retour au carnet</a>
+    <a class="brand" href="index.html">Les évadés du van</a>
+  </div>
+</nav>
+
+<header class="article-head">
+  <div class="wrap">
+    <div class="eyebrow">Espagne · Baléares</div>
+    <h1 class="title">Ushuaïa, plage et soleil :<br>notre <em>virée à Ibiza</em></h1>
+    <div class="meta-row">
+      <span>16 mars 2026</span>
+      <span class="tag">Europe</span>
+      <span class="tag">3 jours</span>
+    </div>
+
+    <img class="cover" src="images/ibiza/ibiza-08.jpg" alt="Concert à Ushuaïa Ibiza sous un décor de papillon géant">
+    <figcaption>Ushuaïa Ibiza — Lost Frequencies, Dimitri Vegas & Like Mike</figcaption>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="day">
+    <span class="day-num">01</span>
+    <h2>Arrivée entre mer, promenade et premières découvertes</h2>
+    <p>Notre séjour à Ibiza a commencé tôt le matin, avec le ferry pris à Dénia en direction des Baléares, cette fois avec la voiture. C'était une solution vraiment pratique, surtout pour pouvoir profiter librement de l'île une fois sur place. On avait choisi de partir assez tôt pour ne pas perdre de temps et pouvoir déjà savourer cette première journée au maximum.</p>
+
+    <p>À notre arrivée, on a commencé par découvrir les alentours de Sant Antoni de Portmany, tout près de notre appartement El Moro. L'ambiance y était déjà très agréable, avec ce mélange de soleil, de douceur et de bord de mer qui donne immédiatement cette sensation d'être en vacances.</p>
+
+    <div class="photo-row two">
+      <img src="images/ibiza/ibiza-01.jpg" alt="Côte rocheuse d'Ibiza au coucher du soleil">
+      <img src="images/ibiza/ibiza-02.jpg" alt="Vue depuis le ferry vers Ibiza">
+    </div>
+
+    <p>On a aussi pris le temps de profiter de la plage près de notre appartement, un vrai plaisir pour commencer ce petit voyage. Pouvoir se poser près de l'eau dès le premier jour, sentir l'air marin et simplement savourer l'instant, c'est exactement le genre de moment qui met tout de suite dans l'ambiance d'Ibiza.</p>
+
+    <p>Plus tard dans la journée, on est allés se promener à Eivissa, avec l'envie de découvrir un peu la ville, flâner dans les rues et faire quelques boutiques. Entre les petites balades, les commerces et l'ambiance vivante de la ville, cette première journée nous a permis de découvrir une autre facette de l'île.</p>
+
+    <p class="pull-note">Une belle entrée en matière pour commencer ce séjour à Ibiza dans une ambiance à la fois détendue et ensoleillée.</p>
+  </section>
+
+  <section class="day">
+    <span class="day-num">02</span>
+    <h2>Marché hippie, plage et soirée inoubliable à Ushuaïa</h2>
+    <p>Pour cette deuxième journée, on a commencé la matinée dans une ambiance complètement différente en allant découvrir le marché hippie de Punta Arabí. Une atmosphère très vivante, beaucoup de stands, de couleurs, et ce petit côté bohème qui correspond parfaitement à l'image qu'on peut avoir d'Ibiza.</p>
+
+    <div class="photo-single">
+      <img src="images/ibiza/ibiza-06.jpg" alt="Ruelle typique d'Ibiza bordée de palmiers">
+    </div>
+
+    <p>À midi, on a décidé de manger sur place, ce qui était très pratique puisqu'il y avait plusieurs food trucks. Ensuite, on est retournés profiter de la plage juste devant l'hôtel — après l'animation du marché, c'était agréable de retrouver un moment plus calme au bord de l'eau.</p>
+
+    <p>En fin d'après-midi, on est rentrés se préparer, parce que la soirée s'annonçait comme l'un des grands moments du séjour. À 18 heures, on partait pour Ushuaïa afin d'assister à Lost Frequencies, Dimitri Vegas et Like Mike. Et franchement, c'était tout simplement incroyable. L'ambiance, la musique, l'énergie du lieu, le cadre… tout était réuni pour passer une soirée totalement folle.</p>
+
+    <div class="photo-single">
+      <video controls poster="images/ibiza/ibiza-08.jpg">
+        <source src="images/ibiza/ibiza-video.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <p>Bon, il faut quand même le dire : les prix sur place sont élevés. Payer 10 euros pour une petite bouteille d'eau, c'est exagéré. Mais malgré ça, la soirée restait tellement impressionnante que ça n'a pas gâché l'expérience.</p>
+
+    <p class="pull-note">Entre l'ambiance détendue du marché hippie et cette soirée complètement folle à Ushuaïa, cette deuxième journée nous a fait vivre deux facettes très différentes d'Ibiza.</p>
+  </section>
+
+  <section class="day">
+    <span class="day-num">03</span>
+    <h2>Formentera, une parenthèse paradisiaque avant le retour</h2>
+    <p>Pour ce troisième jour, on a décidé de prendre un ferry vers Formentera avant de reprendre la route vers Torrevieja. Et franchement, c'était une magnifique idée pour terminer ce petit séjour en beauté. Dès notre arrivée, on a tout de suite été frappés par la beauté de l'endroit : une eau d'une transparence incroyable, avec des couleurs superbes qui donnent presque l'impression d'être dans un décor de carte postale.</p>
+
+    <div class="photo-row two">
+      <img src="images/ibiza/ibiza-03.jpg" alt="Bateaux ancrés dans une eau turquoise à Formentera">
+      <img src="images/ibiza/ibiza-07.jpg" alt="Eau cristalline de Formentera">
+    </div>
+
+    <p>Sur place, on s'est déplacés à pied, ce qui permet de découvrir l'île encore plus tranquillement et de profiter pleinement de l'ambiance. Tout paraît plus calme, plus doux, presque hors du temps.</p>
+
+    <div class="photo-row two">
+      <img src="images/ibiza/ibiza-04.jpg" alt="Coucher de soleil dans l'eau à Ibiza">
+      <img src="images/ibiza/ibiza-05.jpg" alt="Selfie au coucher de soleil">
+    </div>
+
+    <p>Après cette très belle parenthèse à Formentera, on a repris le ferry retour vers Ibiza pour récupérer la voiture, puis enchaîné avec le deuxième ferry en direction de Dénia. Une journée un peu plus tournée vers le retour, mais avec un dernier décor exceptionnel pour finir le voyage de la plus belle des façons.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <span>© 2026 — Les évadés du van</span>
+    <a class="back" href="index.html">&larr; retour au carnet</a>
+  </div>
+</footer>
+
+</body>
+</html>
