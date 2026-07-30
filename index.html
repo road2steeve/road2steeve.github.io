@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les évadés du van — Carnet de route</title>
+<meta name="description" content="Deux étudiants, un van, des routes d'Europe. Carnet de bord de nos aventures en VW California.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#24322a;
+    --paper:#eee7d6;
+    --paper-2:#e4dcc6;
+    --rust:#a8471f;
+    --rust-dark:#7d3417;
+    --moss:#4f6b52;
+    --gold:#c0922f;
+    --line: rgba(36,50,42,0.18);
+    --max: 920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(36,50,42,0.07) 1px, transparent 0);
+    background-size: 22px 22px;
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.55;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding: 76px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{max-width:var(--max); margin:0 auto; padding:0 28px; position:relative;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rust-dark);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px; height:1px;
+    background:var(--rust-dark);
+    display:inline-block;
+  }
+  h1.title{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size: clamp(48px, 9vw, 92px);
+    line-height:0.98;
+    margin:0 0 6px;
+    letter-spacing:-0.01em;
+  }
+  h1.title em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--rust);
+  }
+  .subtitle{
+    max-width:520px;
+    font-size:18px;
+    color:#465046;
+    margin-top:22px;
+  }
+  .route-svg{
+    position:absolute;
+    right:-40px; top:10px;
+    width:260px; height:auto;
+    opacity:0.85;
+  }
+  @media (max-width:720px){ .route-svg{display:none;} }
+
+  /* ---------- STATS STRIP ---------- */
+  .stats{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  .stats .wrap{
+    display:flex; flex-wrap:wrap; gap:34px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    color:var(--moss);
+  }
+  .stats b{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:26px;
+    color:var(--ink);
+    font-weight:500;
+  }
+
+  /* ---------- LOGBOOK / TIMELINE ---------- */
+  .logbook{ padding:84px 0 40px; }
+  .logbook-head{ margin-bottom:56px; }
+  .logbook-head .eyebrow{margin-bottom:14px;}
+  .logbook-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:38px;
+    margin:0;
+  }
+
+  .timeline{
+    position:relative;
+    padding-left:52px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:19px; top:6px; bottom:6px;
+    width:2px;
+    background-image: linear-gradient(var(--ink) 55%, transparent 45%);
+    background-size: 2px 12px;
+    background-repeat:repeat-y;
+  }
+  .entry{
+    position:relative;
+    padding-bottom:56px;
+  }
+  .entry:last-child{padding-bottom:0;}
+  .stamp{
+    position:absolute;
+    left:-52px; top:-6px;
+    width:40px; height:40px;
+    border-radius:50%;
+    border:2px solid var(--rust);
+    display:flex; align-items:center; justify-content:center;
+    background:var(--paper);
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    color:var(--rust);
+    z-index:2;
+  }
+  .entry.draft .stamp{
+    border-color: var(--line);
+    border-style:dashed;
+    color:#8a8471;
+  }
+  .card{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:26px 30px;
+    display:flex;
+    gap:24px;
+    align-items:flex-start;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(36,50,42,0.12);
+  }
+  .entry.draft .card{
+    background:transparent;
+    border-style:dashed;
+  }
+  .card-thumb{
+    width:96px; height:96px;
+    flex:none;
+    border-radius:2px;
+    background:linear-gradient(135deg, var(--moss), var(--rust));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace;
+    color:var(--paper);
+    font-size:11px;
+    text-align:center;
+  }
+  .card-body{flex:1; min-width:0;}
+  .meta{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--moss);
+    letter-spacing:0.04em;
+    display:flex; gap:14px; flex-wrap:wrap;
+    margin-bottom:8px;
+  }
+  .tag{
+    padding:2px 8px;
+    border:1px solid var(--moss);
+    border-radius:20px;
+  }
+  .entry.draft .tag{border-color:#8a8471; color:#8a8471;}
+  .card h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:24px;
+    margin:0 0 8px;
+  }
+  .card p.excerpt{
+    margin:0;
+    color:#465046;
+    font-size:15px;
+  }
+  .draft-badge{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:#8a8471;
+    font-style:italic;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    padding:70px 0 90px;
+    border-top:1px solid var(--line);
+    margin-top:40px;
+  }
+  .about .wrap{
+    display:grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media (max-width:720px){ .about .wrap{grid-template-columns:1fr;} }
+  .about h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:32px;
+    margin:0 0 18px;
+  }
+  .about p{color:#465046; font-size:16px;}
+  .van-badge{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    border:1px solid var(--rust);
+    color:var(--rust);
+    display:inline-block;
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:18px;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:34px 0 50px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:#6b6a58;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  }
+  footer a{text-decoration:none; border-bottom:1px dotted #6b6a58;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Carnet de route — Europe</div>
+    <h1 class="title">Les évadés<br><em>du van</em></h1>
+    <p class="subtitle">Deux étudiants, un VW California, et l'envie constante de prendre la route. Itinéraires, kilomètres, et quelques galères aussi.</p>
+
+    <svg class="route-svg" viewBox="0 0 200 220" fill="none">
+      <path d="M20 10 Q 60 40 40 80 T 90 140 Q 130 160 110 200" stroke="#a8471f" stroke-width="2" stroke-dasharray="1 8" stroke-linecap="round"/>
+      <circle cx="20" cy="10" r="4" fill="#a8471f"/>
+      <circle cx="40" cy="80" r="4" fill="#4f6b52"/>
+      <circle cx="90" cy="140" r="4" fill="#c0922f"/>
+      <circle cx="110" cy="200" r="4" fill="#a8471f"/>
+    </svg>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="wrap">
+    <div><b>6</b>carnets publiés</div>
+    <div><b>7+</b>pays traversés</div>
+    <div><b>1</b>van, toujours le même</div>
+  </div>
+</section>
+
+<section class="logbook">
+  <div class="wrap">
+    <div class="logbook-head">
+      <div class="eyebrow">Destinations</div>
+      <h2>Le journal de bord</h2>
+    </div>
+
+    <div class="timeline">
+
+      <div class="entry">
+        <div class="stamp">ES</div>
+        <a class="card" href="#" style="text-decoration:none;">
+          <div class="card-thumb">IBIZA</div>
+          <div class="card-body">
+            <div class="meta"><span>16 mars 2026</span><span class="tag">Europe</span></div>
+            <h3>Ushuaïa, plage et soleil : notre virée à Ibiza</h3>
+            <p class="excerpt">Une escapade improvisée sur l'île, entre criques cachées et couchers de soleil.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="entry draft">
+        <div class="stamp">·</div>
+        <a class="card" href="#" style="text-decoration:none;">
+          <div class="card-thumb">CZ·PL·SK</div>
+          <div class="card-body">
+            <div class="meta"><span>12 mars 2026</span><span class="draft-badge">brouillon — bientôt en ligne</span></div>
+            <h3>Tchéquie – Pologne – Slovaquie</h3>
+            <p class="excerpt">Trois pays, un van, encore en cours d'écriture...</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="entry">
+        <div class="stamp">TF</div>
+        <a class="card" href="#" style="text-decoration:none;">
+          <div class="card-thumb">TENERIFE</div>
+          <div class="card-body">
+            <div class="meta"><span>27 octobre 2025</span><span class="tag">Europe</span></div>
+            <h3>Tenerife en famille : une parenthèse douce entre découverte et confort</h3>
+            <p class="excerpt">Volcans, plages noires et farniente sur l'île aux éternels printemps.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="entry">
+        <div class="stamp">IT</div>
+        <a class="card" href="#" style="text-decoration:none;">
+          <div class="card-thumb">DOLOMITES</div>
+          <div class="card-body">
+            <div class="meta"><span>1 septembre 2025</span><span class="tag">Europe</span></div>
+            <h3>On a fait les Dolomites pour moins de 500 € pendant 10 jours</h3>
+            <p class="excerpt">Le budget qu'on pensait impossible, et pourtant : sommets, lacs turquoise et van life.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="entry">
+        <div class="stamp">FR</div>
+        <a class="card" href="#" style="text-decoration:none;">
+          <div class="card-thumb">GR34 · PARIS</div>
+          <div class="card-body">
+            <div class="meta"><span>27 juin 2025</span><span class="tag">Europe</span></div>
+            <h3>Trek sur le GR34 puis escapade à Paris : notre double aventure</h3>
+            <p class="excerpt">De la côte bretonne aux rues parisiennes, deux ambiances, une même envie de bouger.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="entry">
+        <div class="stamp">UK</div>
+        <a class="card" href="#" style="text-decoration:none;">
+          <div class="card-thumb">LONDRES</div>
+          <div class="card-body">
+            <div class="meta"><span>25 juin 2024</span><span class="tag">Europe</span></div>
+            <h3>Londres en 48 heures : une escapade inoubliable sous le soleil</h3>
+            <p class="excerpt">Le tout premier carnet : direction l'Angleterre pour un week-end éclair.</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div>
+      <span class="van-badge">🚐 VW California T6</span>
+      <h2>Qui sommes-nous ?</h2>
+    </div>
+    <div>
+      <p>Deux étudiants passionnés, un van, des itinéraires soigneusement préparés et toujours l'envie de découvrir de nouveaux endroits, vivre de belles aventures et partager tout cela avec vous.</p>
+      <p>Prochaine étape : deux semaines sur les routes d'Écosse, en septembre.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <span>© 2026 — Les évadés du van</span>
+    <span>Fait avec la route en tête</span>
+  </div>
+</footer>
+
+</body>
+</html>
