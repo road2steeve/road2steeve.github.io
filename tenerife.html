@@ -38,13 +38,13 @@
   .day-num{ display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; border:2px solid var(--rust); font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--rust); margin-bottom:16px; }
   .day h2{ font-family:'Fraunces', serif; font-weight:500; font-size:24px; margin:0 0 20px; }
   .day p{ margin:0 0 18px; color:#3a453e; font-size:16.5px; }
-  .photo-row{ display:grid; gap:12px; margin: 28px 0; }
+  .photo-row{ display:grid; gap:12px; margin: 22px 0; }
   .photo-row.two{ grid-template-columns:1fr 1fr; }
   .photo-row.three{ grid-template-columns:1fr 1fr 1fr; }
   .photo-row img{ width:100%; height:100%; object-fit:cover; border-radius:2px; border:1px solid var(--line); display:block; aspect-ratio:1/1; }
-  .photo-single{ margin:28px 0; }
+  .photo-single{ margin:22px 0; }
   .photo-single img{ width:100%; border-radius:2px; border:1px solid var(--line); display:block; }
-  @media (max-width:600px){ .photo-row.two, .photo-row.three{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:600px){ .photo-row.three{ grid-template-columns:1fr 1fr; } }
   .pull-note{ font-family:'Fraunces', serif; font-style:italic; font-size:19px; color:var(--rust-dark); border-left:2px solid var(--rust); padding-left:18px; margin:32px 0; }
   footer{ border-top:1px solid var(--line); padding:34px 0 50px; font-family:'JetBrains Mono', monospace; font-size:12px; color:#6b6a58; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:20px; }
 </style>
@@ -67,8 +67,8 @@
       <span class="tag">Europe</span>
       <span class="tag">8 jours</span>
     </div>
-    <img class="cover" src="tenerife-22.jpg" alt="Paysage volcanique du Teide à Tenerife">
-    <figcaption>Le Teide, volcan emblématique de l'île</figcaption>
+    <img class="cover" src="tenerife-01.jpg" alt="Arrivée à Tenerife">
+    <figcaption>Tenerife, îles Canaries</figcaption>
   </div>
 </header>
 
@@ -78,9 +78,10 @@
     <span class="day-num">01</span>
     <h2>Arrivée à Tenerife</h2>
     <p>Notre voyage a commencé à l'aéroport de Luxembourg, avec un vol Luxair direction Tenerife. À notre arrivée, mon parrain, qui vit sur l'île, est venu nous chercher pour nous emmener dans sa villa située au Golf d'Adeje, un coin absolument magnifique. Nous sommes arrivés vers 18h, ce qui nous a permis de profiter d'une première soirée toute en douceur.</p>
-    <div class="photo-row two">
+    <div class="photo-row three">
       <img src="tenerife-01.jpg" alt="Arrivée à la villa du Golf d'Adeje">
       <img src="tenerife-02.jpg" alt="Première soirée à Tenerife">
+      <img src="tenerife-03.jpg" alt="Installation à la villa">
     </div>
     <p class="pull-note">Une première journée calme, simple et agréable, parfaite pour commencer ce séjour à Tenerife.</p>
   </section>
@@ -90,28 +91,28 @@
     <h2>Première vraie journée à Tenerife</h2>
     <p>On a choisi l'option vacances à 100 % : grasse matinée, soleil et zéro stress. Au programme : une journée très calme, entre déjeuner, piscine, croque-monsieur, glace, petit apéritif et douceur de vivre.</p>
     <div class="photo-row two">
-      <img src="tenerife-03.jpg" alt="Détente à la piscine">
-      <img src="tenerife-04.jpg" alt="Journée farniente à Tenerife">
+      <img src="tenerife-04.jpg" alt="Détente à la piscine">
+      <img src="tenerife-05.jpg" alt="Journée farniente à Tenerife">
     </div>
     <p>Le soir, on a dîné au Char Fuego y Brasas, une adresse vraiment incroyable — que l'on aime la viande ou le poisson, c'est un restaurant qu'on recommande sans hésiter.</p>
-    <div class="photo-single">
-      <img src="tenerife-05.jpg" alt="Dîner au restaurant Char Fuego y Brasas">
+    <div class="photo-row two">
+      <img src="tenerife-06.jpg" alt="Dîner au restaurant Char Fuego y Brasas">
+      <img src="tenerife-07.jpg" alt="Soirée au restaurant">
     </div>
   </section>
 
   <section class="day">
     <span class="day-num">03</span>
     <h2>Une journée en famille et un très bel anniversaire</h2>
-    <p>Mes parents sont arrivés à leur tour à Tenerife pour passer quelques jours tous ensemble. Leur arrivée a donné une autre ambiance aux vacances, encore plus familiale et chaleureuse.</p>
+    <p>Mes parents sont arrivés à leur tour à Tenerife pour passer quelques jours tous ensemble. Leur arrivée a donné une autre ambiance aux vacances, encore plus familiale et chaleureuse. C'était aussi l'anniversaire de mon papa : le soir, on a fêté ça comme il se doit, avec un gros apéritif, des bougies et des gâteaux, avant d'aller dîner dans un endroit vraiment exceptionnel, l'hôtel Corales.</p>
     <div class="photo-row three">
-      <img src="tenerife-06.jpg" alt="Petit-déjeuner en famille">
-      <img src="tenerife-07.jpg" alt="Journée détente à la villa">
-      <img src="tenerife-08.jpg" alt="Moment en famille à Tenerife">
+      <img src="tenerife-08.jpg" alt="Petit-déjeuner en famille">
+      <img src="tenerife-09.jpg" alt="Journée détente à la villa">
+      <img src="tenerife-10.jpg" alt="Moment en famille à Tenerife">
     </div>
-    <p>C'était aussi l'anniversaire de mon papa. Le soir, on a fêté ça comme il se doit, avec un gros apéritif, des bougies et des gâteaux, avant d'aller dîner dans un endroit vraiment exceptionnel : l'hôtel Corales. Le cadre était absolument magnifique, élégant et impressionnant.</p>
     <div class="photo-row two">
-      <img src="tenerife-09.jpg" alt="Soirée d'anniversaire à l'hôtel Corales">
-      <img src="tenerife-10.jpg" alt="Dîner à La Trattoria de Il Bocconcino">
+      <img src="tenerife-11.jpg" alt="Soirée d'anniversaire à l'hôtel Corales">
+      <img src="tenerife-12.jpg" alt="Dîner à La Trattoria de Il Bocconcino">
     </div>
     <p class="pull-note">Une journée remplie de calme, de soleil et de beaux souvenirs.</p>
   </section>
@@ -119,15 +120,10 @@
   <section class="day">
     <span class="day-num">04</span>
     <h2>Siam Park</h2>
-    <p>Réveillés sous un magnifique ciel bleu, avec les paramoteurs qui passaient au-dessus de nos têtes. Pour cette quatrième journée, direction le Siam Park, l'un des plus grands parcs aquatiques d'Europe.</p>
+    <p>Réveillés sous un magnifique ciel bleu, avec les paramoteurs qui passaient au-dessus de nos têtes. Pour cette quatrième journée, direction le Siam Park, l'un des plus grands parcs aquatiques d'Europe. En période de vacances scolaires, il y a énormément de monde — les tickets coupe-file deviennent presque indispensables pour vraiment en profiter.</p>
     <div class="photo-row two">
-      <img src="tenerife-11.jpg" alt="Siam Park, parc aquatique à Tenerife">
-      <img src="tenerife-12.jpg" alt="Toboggans du Siam Park">
-    </div>
-    <p>Le parc est impressionnant, très beau, avec une ambiance qui plonge directement dans l'aventure. En période de vacances scolaires, il y a énormément de monde — les tickets coupe-file deviennent presque indispensables pour vraiment en profiter.</p>
-    <div class="photo-row two">
-      <img src="tenerife-13.jpg" alt="Attraction du Siam Park">
-      <img src="tenerife-14.jpg" alt="Journée au parc aquatique">
+      <img src="tenerife-13.jpg" alt="Siam Park, parc aquatique à Tenerife">
+      <img src="tenerife-14.jpg" alt="Toboggans du Siam Park">
     </div>
   </section>
 
@@ -147,13 +143,13 @@
     <span class="day-num">06</span>
     <h2>Du Teide aux lumières du soir</h2>
     <p>On a décidé de partir découvrir le célèbre Teide, ce volcan emblématique de Tenerife. Les anciennes coulées de lave encore bien visibles, les grandes plaines presque entièrement plates, et ce volcan immense qui domine le décor — l'ambiance est totalement différente du reste de l'île.</p>
-    <div class="photo-row two">
+    <div class="photo-row three">
       <img src="tenerife-18.jpg" alt="Le volcan Teide et son paysage lunaire">
       <img src="tenerife-19.jpg" alt="Coulées de lave au Teide">
+      <img src="tenerife-20.jpg" alt="Paysage volcanique de Tenerife">
     </div>
     <p>Le téléphérique était fermé à cause du vent — dommage, mais la visite valait déjà le détour. Le soir, direction Playa de las Américas pour une ambiance beaucoup plus animée.</p>
-    <div class="photo-row three">
-      <img src="tenerife-20.jpg" alt="Paysage volcanique de Tenerife">
+    <div class="photo-row two">
       <img src="tenerife-21.jpg" alt="Playa de las Américas le soir">
       <img src="tenerife-22.jpg" alt="Ambiance nocturne à Tenerife">
     </div>
@@ -163,19 +159,22 @@
     <span class="day-num">07</span>
     <h2>Entre piscine naturelle et coup de cœur pour Masca</h2>
     <p>On a d'abord profité d'une piscine naturelle, comme on en trouve beaucoup à Tenerife — l'eau y est d'un bleu superbe, et le cadre vraiment apaisant.</p>
-    <div class="photo-row two">
+    <div class="photo-row three">
       <img src="tenerife-23.jpg" alt="Piscine naturelle à Tenerife">
       <img src="tenerife-24.jpg" alt="Baignade dans l'eau turquoise">
+      <img src="tenerife-25.jpg" alt="Piscine naturelle, eau cristalline">
     </div>
     <p>Mais le vrai moment fort de la journée, et sans doute du voyage, a été la découverte de Masca. Les paysages nous ont laissés bouche bée du début à la fin — encore plus beau que le Teide selon nous, avec ce contraste saisissant entre paysages secs et vallée verdoyante.</p>
     <div class="photo-row three">
-      <img src="tenerife-25.jpg" alt="Village de Masca niché dans la montagne">
-      <img src="tenerife-26.jpg" alt="Vallée verdoyante de Masca">
-      <img src="tenerife-27.jpg" alt="Route sinueuse vers Masca">
+      <img src="tenerife-26.jpg" alt="Village de Masca niché dans la montagne">
+      <img src="tenerife-27.jpg" alt="Vallée verdoyante de Masca">
+      <img src="tenerife-28.jpg" alt="Route sinueuse vers Masca">
     </div>
-    <div class="photo-row two">
-      <img src="tenerife-28.jpg" alt="Panorama sur Masca">
-      <img src="tenerife-29.jpg" alt="Fin de journée à Masca">
+    <p>La route pour y accéder fait aussi partie de l'expérience. Elle est très étroite par endroits, ce qui demande un peu d'attention, mais cela rend l'arrivée encore plus mémorable.</p>
+    <div class="photo-row three">
+      <img src="tenerife-29.jpg" alt="Panorama sur Masca">
+      <img src="tenerife-30.jpg" alt="Fin de journée à Masca">
+      <img src="tenerife-31.jpg" alt="Coucher de soleil sur Tenerife">
     </div>
     <p class="pull-note">On a presque l'impression que ce lieu se mérite, et une fois sur place, on comprend pourquoi.</p>
   </section>
@@ -183,16 +182,12 @@
   <section class="day">
     <span class="day-num">08</span>
     <h2>Le retour, des souvenirs plein la tête</h2>
-    <p>Notre voyage à Tenerife touchait déjà à sa fin. Il était temps de reprendre l'avion avec Luxair en direction du Luxembourg, avec ce petit mélange de tristesse et de gratitude qu'on connaît bien à la fin des vacances.</p>
+    <p>Notre voyage à Tenerife touchait déjà à sa fin. Il était temps de reprendre l'avion avec Luxair en direction du Luxembourg, avec ce petit mélange de tristesse et de gratitude qu'on connaît bien à la fin des vacances. Le retour a été un peu brutal en retrouvant la pluie au Luxembourg.</p>
     <div class="photo-row two">
-      <img src="tenerife-30.jpg" alt="Derniers instants à Tenerife">
-      <img src="tenerife-31.jpg" alt="Retour vers l'aéroport">
+      <img src="tenerife-32.jpg" alt="Vue depuis l'avion au-dessus des nuages">
+      <img src="tenerife-33.jpg" alt="Dernier regard sur Tenerife">
     </div>
-    <p>Le retour a été un peu brutal en retrouvant la pluie au Luxembourg. Mais ce séjour à Tenerife nous laisse de très beaux souvenirs : le calme, le confort, les moments en famille, les paysages incroyables et quelques très belles découvertes.</p>
-    <div class="photo-row two">
-      <img src="tenerife-32.jpg" alt="Derniers souvenirs du voyage">
-      <img src="tenerife-33.jpg" alt="Fin du séjour à Tenerife">
-    </div>
+    <p class="pull-note">Entre le calme, le confort, les moments en famille et les paysages incroyables, ce voyage restera pour nous une parenthèse douce et lumineuse.</p>
   </section>
 
 </main>
