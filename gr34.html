@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trek sur le GR34 puis escapade à Paris : notre double aventure — Les évadés du van</title>
+<meta name="description" content="8 jours en autonomie sur le GR34, le sentier des douaniers breton, suivis d'une escapade à Paris.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#24322a; --paper:#eee7d6; --paper-2:#e4dcc6;
+    --rust:#a8471f; --rust-dark:#7d3417; --moss:#4f6b52; --gold:#c0922f;
+    --line: rgba(36,50,42,0.18); --max: 760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper);
+    background-image: radial-gradient(circle at 1px 1px, rgba(36,50,42,0.07) 1px, transparent 0);
+    background-size: 22px 22px; color:var(--ink); font-family:'Work Sans', sans-serif; line-height:1.65; }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  nav{ padding:26px 0; border-bottom:1px solid var(--line); }
+  nav .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .back{ font-family:'JetBrains Mono', monospace; font-size:13px; text-decoration:none; color:var(--rust-dark); display:flex; align-items:center; gap:8px; }
+  .brand{ font-family:'Fraunces', serif; font-style:italic; font-weight:500; font-size:15px; color:var(--moss); text-decoration:none; }
+  .article-head{padding:64px 0 40px;}
+  .eyebrow{ font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--rust-dark); display:flex; align-items:center; gap:10px; margin-bottom:22px; }
+  .eyebrow::before{ content:""; width:26px; height:1px; background:var(--rust-dark); display:inline-block; }
+  h1.title{ font-family:'Fraunces', serif; font-weight:500; font-size: clamp(30px, 5.4vw, 48px); line-height:1.08; margin:0 0 20px; letter-spacing:-0.01em; }
+  h1.title em{ font-style:italic; font-weight:400; color:var(--rust); }
+  .meta-row{ display:flex; gap:18px; flex-wrap:wrap; font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--moss); }
+  .tag{ padding:2px 8px; border:1px solid var(--moss); border-radius:20px; }
+  .cover{ width:100%; border-radius:2px; margin:36px 0 8px; display:block; border:1px solid var(--line); }
+  figcaption{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color:#6b6a58; text-align:right; margin-bottom:36px; }
+  .day{ padding:44px 0; border-top:1px dashed var(--line); }
+  .day:first-of-type{ border-top:none; }
+  .day-num{ display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; border-radius:50%; border:2px solid var(--rust); font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--rust); margin-bottom:16px; }
+  .day h2{ font-family:'Fraunces', serif; font-weight:500; font-size:23px; margin:0 0 18px; }
+  .day p{ margin:0 0 16px; color:#3a453e; font-size:16px; }
+  .heart{ font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--rust-dark); background:var(--paper-2); display:inline-block; padding:5px 10px; border-radius:20px; margin:4px 6px 4px 0; }
+  .photo-row{ display:grid; gap:12px; margin: 20px 0; }
+  .photo-row.two{ grid-template-columns:1fr 1fr; }
+  .photo-row.three{ grid-template-columns:1fr 1fr 1fr; }
+  .photo-row.five{ grid-template-columns:repeat(5,1fr); }
+  .photo-row img{ width:100%; height:100%; object-fit:cover; border-radius:2px; border:1px solid var(--line); display:block; aspect-ratio:1/1; }
+  @media (max-width:600px){ .photo-row.three, .photo-row.five{ grid-template-columns:1fr 1fr; } }
+  .pull-note{ font-family:'Fraunces', serif; font-style:italic; font-size:18px; color:var(--rust-dark); border-left:2px solid var(--rust); padding-left:18px; margin:28px 0; }
+  .section-divider{ text-align:center; font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--moss); text-transform:uppercase; letter-spacing:0.14em; margin:56px 0 8px; }
+  footer{ border-top:1px solid var(--line); padding:34px 0 50px; font-family:'JetBrains Mono', monospace; font-size:12px; color:#6b6a58; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; retour au carnet</a>
+    <a class="brand" href="index.html">Les évadés du van</a>
+  </div>
+</nav>
+
+<header class="article-head">
+  <div class="wrap">
+    <div class="eyebrow">France · Bretagne &amp; Paris</div>
+    <h1 class="title">Trek sur le GR34 puis escapade à Paris : notre <em>double aventure</em></h1>
+    <div class="meta-row">
+      <span>27 juin 2025</span>
+      <span class="tag">Europe</span>
+      <span class="tag">8 jours</span>
+      <span class="tag">en autonomie</span>
+    </div>
+    <img class="cover" src="gr34-13.jpg" alt="Sur le GR34, le sentier des douaniers">
+    <figcaption>Le GR34, sentier des douaniers, côte bretonne</figcaption>
+
+    <p>Nous partons pour plusieurs jours sur le GR34, aussi appelé le sentier des douaniers, avec nos sacs à dos et tout le matériel nécessaire. Nous faisons cette aventure en autonomie, avec notre tente, notre nourriture et tout l'équipement pour dormir et cuisiner. L'objectif est de suivre la côte bretonne au rythme de la marche, en profitant des paysages et en s'arrêtant chaque soir pour planter la tente et récupérer avant l'étape suivante.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="day">
+    <span class="day-num">01</span>
+    <h2>Départ de Bruxelles</h2>
+    <p>Notre aventure sur le GR34 commence à Bruxelles, où nous prenons un FlixBus direction Paris Bercy. Une fois arrivés à Paris, nous devons attendre près de 3 heures à la gare routière vers 1h du matin avant notre correspondance… clairement pas la partie préférée du voyage.</p>
+    <div class="photo-row three">
+      <img src="gr34-01.jpg" alt="Départ en FlixBus depuis Bruxelles">
+      <img src="gr34-02.jpg" alt="Attente à la gare routière de Paris Bercy">
+      <img src="gr34-03.jpg" alt="Nuit de correspondance">
+    </div>
+  </section>
+
+  <section class="day">
+    <span class="day-num">02</span>
+    <h2>Rennes — Saint-Malo — Saint-Jacut-de-la-Mer</h2>
+    <p>Une fois arrivés à Rennes, nous prenons un bus en direction de Saint-Malo pour continuer notre trajet vers la côte bretonne. Une fois arrivés en bus à Lancieux, notre aventure sur le GR34, le célèbre sentier des douaniers qui longe toute la côte bretonne, peut enfin commencer. Notre objectif du jour : rejoindre Saint-Jacut-de-la-Mer, situé à environ 14 km de marche.</p>
+    <p>Vers midi, nous arrivons à Saint-Jacut-de-la-Mer, une petite presqu'île pleine de charme entourée par la mer. Nous posons nos sacs au camping avant d'aller dîner directement sur la plage, face à l'eau. En fin d'après-midi, nous partons explorer le village, et tombons sur une petite guinguette en bord de mer, parfaite pour terminer la journée avec une vue magnifique sur l'océan au coucher du soleil.</p>
+    <div class="photo-row two">
+      <img src="gr34-04.jpg" alt="Marche le long du GR34 vers Saint-Jacut-de-la-Mer">
+      <img src="gr34-05.jpg" alt="Saint-Jacut-de-la-Mer, presqu'île bretonne">
+    </div>
+    <p><span class="heart">♡ Camping municipal Saint-Jacut-de-la-Mer</span></p>
+  </section>
+
+  <section class="day">
+    <span class="day-num">03</span>
+    <h2>Saint-Cast-le-Guildo</h2>
+    <p>Nous quittons Saint-Jacut-de-la-Mer et reprenons le GR34 en direction de Saint-Cast-le-Guildo. Le sentier longe toujours la côte et offre de magnifiques paysages entre falaises, plages et points de vue sur la mer. Après 30 kilomètres sur le sentier des douaniers, nous arrivons finalement à Saint-Cast-le-Guildo, une charmante station balnéaire connue pour ses grandes plages et son port.</p>
+    <div class="photo-row three">
+      <img src="gr34-06.jpg" alt="Falaises le long du GR34">
+      <img src="gr34-07.jpg" alt="Randonnée vers Saint-Cast-le-Guildo">
+      <img src="gr34-08.jpg" alt="Arrivée à Saint-Cast-le-Guildo">
+    </div>
+    <p><span class="heart">♡ Camping de la Baie</span></p>
+  </section>
+
+  <section class="day">
+    <span class="day-num">04</span>
+    <h2>Plévenon</h2>
+    <p>Nous continuons notre aventure sur le GR34 avec une longue étape d'environ 30 km. L'un des moments forts de la journée est le passage par le Cap Fréhel, un endroit vraiment spectaculaire avec ses falaises impressionnantes et l'océan à perte de vue. Après cette longue marche, nous arrivons à Plévenon. Avec le grand soleil et la chaleur, la journée se termine de la meilleure façon possible : une baignade dans la mer.</p>
+    <div class="photo-row two">
+      <img src="gr34-09.jpg" alt="Cap Fréhel sur le GR34">
+      <img src="gr34-10.jpg" alt="Baignade après l'étape vers Plévenon">
+    </div>
+    <p><span class="heart">♡ Camping du pont de l'étang</span></p>
+  </section>
+
+  <section class="day">
+    <span class="day-num">05</span>
+    <h2>Saint-Pabu</h2>
+    <p>Nous repartons pour une nouvelle étape, avec 24 km de marche, en totale autonomie avec notre tente et tout notre matériel sur le dos. En passant par les Sables-d'Or-les-Pins, près d'Erquy, nous faisons une petite balade à cheval — une expérience vraiment agréable pour découvrir les paysages autrement, entre plage, dunes et vue sur la mer.</p>
+    <div class="photo-row two">
+      <img src="gr34-11.jpg" alt="Balade à cheval près d'Erquy">
+      <img src="gr34-12.jpg" alt="Étape vers Saint-Pabu">
+    </div>
+    <p><span class="heart">♡ Camping de la Vallée</span></p>
+  </section>
+
+  <section class="day">
+    <span class="day-num">06</span>
+    <h2>Hillion</h2>
+    <p>Pour notre dernier camping, nous continuons notre marche sur le GR34, toujours avec nos sacs à dos et notre tente. Après plusieurs jours d'aventure le long de la côte bretonne, nous profitons une dernière fois des magnifiques paysages entre mer, falaises et plages.</p>
+    <div class="photo-row three">
+      <img src="gr34-13.jpg" alt="Dernière étape du GR34 vers Hillion">
+      <img src="gr34-14.jpg" alt="Côte bretonne près de Hillion">
+      <img src="gr34-15.jpg" alt="Dernier camping du trek">
+    </div>
+    <p><span class="heart">♡ Camping village d'O</span></p>
+  </section>
+
+  <section class="day">
+    <span class="day-num">07</span>
+    <h2>Saint-Brieuc</h2>
+    <p>Nous terminons notre aventure en rejoignant notre dernière étape à pied : Saint-Brieuc. Après ces derniers kilomètres sur le GR34, nous arrivons en ville pour prendre le TGV en direction de Paris, qui marque la fin de notre randonnée le long de la côte bretonne. Un beau moyen de clôturer cette aventure sur le sentier des douaniers.</p>
+  </section>
+
+  <div class="section-divider">— Escapade à Paris —</div>
+
+  <section class="day">
+    <span class="day-num">08</span>
+    <h2>Paris</h2>
+    <p>Maintenant, place à un peu de repos et de promenade en ville. Une fois arrivés à Paris, nous nous installons à l'Hôtel Esté. Nous profitons ensuite de la journée pour découvrir quelques lieux incontournables de la capitale comme le Louvre, Montmartre, la Tour Eiffel et l'Arc de Triomphe.</p>
+    <div class="photo-row three">
+      <img src="gr34-16.jpg" alt="Découverte de Paris">
+      <img src="gr34-17.jpg" alt="Balade parisienne">
+      <img src="gr34-18.jpg" alt="Monuments de Paris">
+    </div>
+    <p>Après cette belle balade dans la ville, nous retournons à l'hôtel pour nous détendre au spa et récupérer après plusieurs jours de randonnée.</p>
+    <div class="photo-row two">
+      <img src="gr34-19.jpg" alt="Détente à l'hôtel après le trek">
+      <img src="gr34-20.jpg" alt="Fin de l'escapade parisienne">
+    </div>
+    <p class="pull-note">Le lendemain, nous reprenons le TGV pour rentrer à la maison, ce qui clôture parfaitement notre aventure sur le GR34.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <span>© 2026 — Les évadés du van</span>
+    <a class="back" href="index.html">&larr; retour au carnet</a>
+  </div>
+</footer>
+
+</body>
+</html>
