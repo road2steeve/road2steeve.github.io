@@ -58,6 +58,13 @@
   @media (max-width:600px){ .photo-row.three, .photo-row.four{ grid-template-columns:1fr 1fr; } }
   .pull-note{ font-family:'Fraunces', serif; font-style:italic; font-size:18px; color:var(--rust-dark); border-left:2px solid var(--rust); padding-left:18px; margin:28px 0; }
   footer{ border-top:1px solid var(--line); padding:34px 0 50px; font-family:'JetBrains Mono', monospace; font-size:12px; color:#6b6a58; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:20px; }
+  .gpx-link{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    color:var(--rust-dark); border:1px solid var(--rust); border-radius:20px;
+    padding:5px 12px; text-decoration:none; margin-top:18px;
+  }
+  .gpx-link:hover{ background:var(--rust); color:#fff; }
 </style>
 </head>
 <body>
@@ -79,6 +86,7 @@
       <span class="tag">10 jours</span>
       <span class="tag">877 km</span>
     </div>
+    <br><a class="gpx-link" href="gpx/dolomites.gpx" download>📥 Télécharger l'itinéraire GPX</a>
     <img class="cover" src="dolomites-13.jpg" alt="Paysage des Dolomites">
     <figcaption>Quelque part dans les Dolomites, à bord de Steeve</figcaption>
 

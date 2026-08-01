@@ -151,6 +151,13 @@
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
     margin-top:20px;
   }
+  .gpx-link{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    color:var(--rust-dark); border:1px solid var(--rust); border-radius:20px;
+    padding:5px 12px; text-decoration:none; margin-top:18px;
+  }
+  .gpx-link:hover{ background:var(--rust); color:#fff; }
 </style>
 </head>
 <body>
@@ -171,6 +178,7 @@
       <span class="tag">Europe</span>
       <span class="tag">3 jours</span>
     </div>
+    <br><a class="gpx-link" href="gpx/ibiza.gpx" download>📥 Télécharger l'itinéraire GPX</a>
 
     <img class="cover" src="ibiza-08.jpg" alt="Concert à Ushuaïa Ibiza sous un décor de papillon géant">
     <figcaption>Ushuaïa Ibiza — Lost Frequencies, Dimitri Vegas & Like Mike</figcaption>

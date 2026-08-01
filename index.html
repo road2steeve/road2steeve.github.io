@@ -154,6 +154,42 @@
     font-size:11.5px;
     color:var(--moss);
     margin-top:12px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .replay-btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    background:none; border:1px solid var(--moss); color:var(--moss);
+    padding:4px 12px; border-radius:20px; cursor:pointer;
+  }
+  .replay-btn:hover{ background:var(--moss); color:#fff; }
+  .van-icon{
+    font-size:20px;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
+    transition: transform 0.1s linear;
+  }
+
+  /* ---------- FILTERS ---------- */
+  .filters{
+    display:flex; flex-wrap:wrap; gap:10px 28px; margin-bottom:44px;
+    padding:18px 22px; background:var(--paper-2); border:1px solid var(--line); border-radius:2px;
+  }
+  .filter-group{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .filter-group .flabel{
+    font-family:'JetBrains Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--moss); margin-right:2px;
+  }
+  .fbtn{
+    font-family:'JetBrains Mono', monospace; font-size:12px;
+    background:var(--paper); border:1px solid var(--line); color:var(--ink);
+    padding:5px 12px; border-radius:20px; cursor:pointer; transition:.15s;
+  }
+  .fbtn:hover{ border-color:var(--rust); }
+  .fbtn.active{ background:var(--rust); border-color:var(--rust); color:#fff; }
+  .entry.hidden{ display:none; }
+  .no-results{
+    font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--moss);
+    text-align:center; padding:30px 0; display:none;
   }
 
   /* ---------- LOGBOOK / TIMELINE ---------- */
@@ -355,7 +391,10 @@
       <p>Clique sur un point pour retrouver le carnet correspondant.</p>
     </div>
     <div id="europe-map"></div>
-    <div class="map-legend">Fond de carte © OpenStreetMap</div>
+    <div class="map-legend">
+      <span>Fond de carte © OpenStreetMap</span>
+      <button class="replay-btn" id="replayBtn">↻ Rejouer le trajet</button>
+    </div>
   </div>
 </section>
 
@@ -393,6 +432,76 @@
   pin(50.0755, 14.4378, "🇨🇿 Prague", "czpolsk.html");
   pin(49.10, 19.60, "🇸🇰 Low Tatras", "czpolsk.html");
   pin(50.0647, 19.9450, "🇵🇱 Cracovie", "czpolsk.html");
+
+  // ---------- Animation du trajet chronologique ----------
+  var journey = [
+    {lat:50.29, lng:5.10},   // Spontin — départ
+    {lat:51.5074, lng:-0.1278}, // Londres (juin 2024)
+    {lat:48.60, lng:-2.35},  // GR34, Bretagne (juin 2025)
+    {lat:48.8566, lng:2.3522}, // Paris
+    {lat:46.5405, lng:12.1357}, // Dolomites (sept 2025)
+    {lat:28.0916, lng:-16.7297}, // Tenerife (oct 2025)
+    {lat:38.9067, lng:1.4206}, // Ibiza (mars 2026)
+    {lat:50.0755, lng:14.4378}, // Prague (juin 2026)
+    {lat:49.10, lng:19.60},   // Low Tatras
+    {lat:50.0647, lng:19.9450}, // Cracovie
+    {lat:50.29, lng:5.10}     // retour Spontin
+  ];
+
+  var routeLine = L.polyline([], {color: rust, weight:2.5, dashArray:'6 6', opacity:0.85}).addTo(map);
+
+  var vanIcon = L.divIcon({
+    html:'<div class="van-icon">🚐</div>',
+    className:'', iconSize:[24,24], iconAnchor:[12,12]
+  });
+  var vanMarker = L.marker([journey[0].lat, journey[0].lng], {icon:vanIcon, zIndexOffset:1000}).addTo(map);
+
+  var STEPS_PER_SEGMENT = 26;
+  var INTERVAL_MS = 22;
+  var animTimer = null;
+
+  function bearing(a, b){
+    var dy = b.lat - a.lat, dx = b.lng - a.lng;
+    return Math.atan2(dx, dy) * 180 / Math.PI;
+  }
+
+  function runJourneyAnimation(){
+    if(animTimer) clearInterval(animTimer);
+    routeLine.setLatLngs([]);
+    var pathPoints = [];
+    var segIndex = 0, stepInSeg = 0;
+
+    animTimer = setInterval(function(){
+      if(segIndex >= journey.length - 1){
+        clearInterval(animTimer);
+        return;
+      }
+      var a = journey[segIndex], b = journey[segIndex+1];
+      var t = stepInSeg / STEPS_PER_SEGMENT;
+      var lat = a.lat + (b.lat - a.lat) * t;
+      var lng = a.lng + (b.lng - a.lng) * t;
+
+      pathPoints.push([lat, lng]);
+      routeLine.setLatLngs(pathPoints);
+      vanMarker.setLatLng([lat, lng]);
+
+      var ang = bearing(a, b);
+      var el = vanMarker.getElement();
+      if(el){
+        var inner = el.querySelector('.van-icon');
+        if(inner) inner.style.transform = 'rotate(' + ang + 'deg)';
+      }
+
+      stepInSeg++;
+      if(stepInSeg > STEPS_PER_SEGMENT){
+        stepInSeg = 0;
+        segIndex++;
+      }
+    }, INTERVAL_MS);
+  }
+
+  setTimeout(runJourneyAnimation, 500);
+  document.getElementById('replayBtn').addEventListener('click', runJourneyAnimation);
 </script>
 
 <section class="logbook">
@@ -402,9 +511,28 @@
       <h2>Le journal de bord</h2>
     </div>
 
-    <div class="timeline">
+    <div class="filters">
+      <div class="filter-group">
+        <span class="flabel">Pays</span>
+        <button class="fbtn" data-filter-group="country" data-filter-value="Espagne">Espagne</button>
+        <button class="fbtn" data-filter-group="country" data-filter-value="Italie">Italie</button>
+        <button class="fbtn" data-filter-group="country" data-filter-value="France">France</button>
+        <button class="fbtn" data-filter-group="country" data-filter-value="Royaume-Uni">Royaume-Uni</button>
+        <button class="fbtn" data-filter-group="country" data-filter-value="Europe centrale">Europe centrale</button>
+      </div>
+      <div class="filter-group">
+        <span class="flabel">Type</span>
+        <button class="fbtn" data-filter-group="type" data-filter-value="Randonnée">Randonnée</button>
+        <button class="fbtn" data-filter-group="type" data-filter-value="Plage">Plage</button>
+        <button class="fbtn" data-filter-group="type" data-filter-value="Ville">Ville</button>
+        <button class="fbtn" data-filter-group="type" data-filter-value="Roadtrip">Roadtrip</button>
+      </div>
+      <button class="fbtn" id="resetFilters" style="margin-left:auto;">✕ Réinitialiser</button>
+    </div>
 
-      <div class="entry">
+    <div class="timeline">
+      <p class="no-results" id="noResults">Aucun carnet ne correspond à ces filtres.</p>
+      <div class="entry" data-country="Espagne" data-type="Plage">
         <div class="stamp">ES</div>
         <a class="card" href="ibiza.html" style="text-decoration:none;">
           <div class="card-thumb" style="background-image:url(ibiza-05.jpg)"><span>IBIZA</span></div>
@@ -416,7 +544,7 @@
         </a>
       </div>
 
-      <div class="entry">
+      <div class="entry" data-country="Europe centrale" data-type="Roadtrip Randonnée Ville">
         <div class="stamp">CZ</div>
         <a class="card" href="czpolsk.html" style="text-decoration:none;">
           <div class="card-thumb" style="background-image:url(czpolsk-13.jpg)"><span>CZ·PL·SK</span></div>
@@ -428,7 +556,7 @@
         </a>
       </div>
 
-      <div class="entry">
+      <div class="entry" data-country="Espagne" data-type="Plage Randonnée">
         <div class="stamp">TF</div>
         <a class="card" href="tenerife.html" style="text-decoration:none;">
           <div class="card-thumb" style="background-image:url(tenerife-18.jpg)"><span>TENERIFE</span></div>
@@ -440,7 +568,7 @@
         </a>
       </div>
 
-      <div class="entry">
+      <div class="entry" data-country="Italie" data-type="Randonnée Roadtrip">
         <div class="stamp">IT</div>
         <a class="card" href="dolomites.html" style="text-decoration:none;">
           <div class="card-thumb" style="background-image:url(dolomites-13.jpg)"><span>DOLOMITES</span></div>
@@ -452,7 +580,7 @@
         </a>
       </div>
 
-      <div class="entry">
+      <div class="entry" data-country="France" data-type="Randonnée Ville">
         <div class="stamp">FR</div>
         <a class="card" href="gr34.html" style="text-decoration:none;">
           <div class="card-thumb" style="background-image:url(gr34-13.jpg)"><span>GR34 · PARIS</span></div>
@@ -464,7 +592,7 @@
         </a>
       </div>
 
-      <div class="entry">
+      <div class="entry" data-country="Royaume-Uni" data-type="Ville">
         <div class="stamp">UK</div>
         <a class="card" href="london.html" style="text-decoration:none;">
           <div class="card-thumb" style="background-image:url(london-cover.jpg)"><span>LONDRES</span></div>
@@ -499,6 +627,53 @@
     <span>Fait avec la route en tête</span>
   </div>
 </footer>
+
+<script>
+  var activeFilters = { country: null, type: null };
+  var buttons = document.querySelectorAll('.fbtn[data-filter-group]');
+  var entries = document.querySelectorAll('.entry');
+  var noResults = document.getElementById('noResults');
+
+  function applyFilters(){
+    var visibleCount = 0;
+    entries.forEach(function(entry){
+      var country = entry.dataset.country || '';
+      var type = entry.dataset.type || '';
+      var okCountry = !activeFilters.country || country.includes(activeFilters.country);
+      var okType = !activeFilters.type || type.includes(activeFilters.type);
+      var show = okCountry && okType;
+      entry.classList.toggle('hidden', !show);
+      if(show) visibleCount++;
+    });
+    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var group = btn.dataset.filterGroup;
+      var value = btn.dataset.filterValue;
+      var alreadyActive = activeFilters[group] === value;
+
+      buttons.forEach(function(b){
+        if(b.dataset.filterGroup === group) b.classList.remove('active');
+      });
+
+      if(alreadyActive){
+        activeFilters[group] = null;
+      } else {
+        activeFilters[group] = value;
+        btn.classList.add('active');
+      }
+      applyFilters();
+    });
+  });
+
+  document.getElementById('resetFilters').addEventListener('click', function(){
+    activeFilters = { country:null, type:null };
+    buttons.forEach(function(b){ b.classList.remove('active'); });
+    applyFilters();
+  });
+</script>
 
 </body>
 </html>
