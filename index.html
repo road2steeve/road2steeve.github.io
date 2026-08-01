@@ -169,7 +169,40 @@
     transition: transform 0.1s linear;
   }
 
-  /* ---------- FILTERS ---------- */
+  /* ---------- UPCOMING TRIPS ---------- */
+  .upcoming{ padding:70px 0; border-top:1px solid var(--line); }
+  .upcoming .eyebrow{ margin-bottom:14px; }
+  .upcoming h2{ font-family:'Fraunces', serif; font-weight:500; font-size:32px; margin:0 0 8px; }
+  .upcoming > .wrap > p{ color:#465046; font-size:15.5px; max-width:520px; margin:0 0 36px; }
+
+  .trip-card{
+    display:grid; grid-template-columns:1.1fr 1fr; gap:0;
+    background:var(--paper-2); border:1px solid var(--line); border-radius:2px;
+    overflow:hidden; text-decoration:none; color:var(--ink);
+    transition:box-shadow .18s ease, transform .18s ease;
+  }
+  .trip-card:hover{ box-shadow:0 10px 30px rgba(36,50,42,0.14); transform:translateY(-2px); }
+  @media (max-width:720px){ .trip-card{ grid-template-columns:1fr; } }
+
+  .trip-info{ padding:32px 34px; }
+  .countdown-pill{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:'JetBrains Mono', monospace; font-size:12.5px;
+    background:var(--rust); color:#fff; padding:5px 13px; border-radius:20px; margin-bottom:16px;
+  }
+  .trip-info h3{ font-family:'Fraunces', serif; font-weight:500; font-size:26px; margin:0 0 10px; }
+  .trip-info p{ color:#465046; font-size:14.5px; margin:0 0 18px; }
+  .trip-stats{ display:flex; gap:22px; flex-wrap:wrap; margin-bottom:18px; }
+  .trip-stats div{ font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--moss); }
+  .trip-stats b{ display:block; font-family:'Fraunces', serif; font-size:22px; color:var(--ink); font-weight:500; }
+  .trip-link{ font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--rust-dark); display:inline-flex; align-items:center; gap:6px; }
+
+  .trip-map{
+    background:var(--paper); position:relative; display:flex; align-items:center; justify-content:center;
+    padding:20px; border-left:1px solid var(--line);
+  }
+  @media (max-width:720px){ .trip-map{ border-left:none; border-top:1px solid var(--line); } }
+  .trip-map svg{ width:100%; max-width:260px; height:auto; }
   .filters{
     display:flex; flex-wrap:wrap; gap:10px 28px; margin-bottom:44px;
     padding:18px 22px; background:var(--paper-2); border:1px solid var(--line); border-radius:2px;
@@ -745,6 +778,61 @@
     </div>
   </div>
 </section>
+
+<section class="upcoming">
+  <div class="wrap">
+    <div class="eyebrow">À venir</div>
+    <h2>Prochains voyages</h2>
+    <p>Le prochain départ est déjà planifié, jour par jour — itinéraire, spots de bivouac et randonnées prêts à partir.</p>
+
+    <a class="trip-card" href="ecosse.html">
+      <div class="trip-info">
+        <div class="countdown-pill" id="scotlandCountdown">🗓 Calcul du départ...</div>
+        <h3>Road trip Highlands & ferry</h3>
+        <p>Édimbourg, Glencoe, l'île de Skye, Assynt, Durness et les Cairngorms — deux semaines en camping-car à travers l'Écosse, via le ferry Douvres–Calais.</p>
+        <div class="trip-stats">
+          <div><b>14</b>jours</div>
+          <div><b>13</b>nuits</div>
+          <div><b>9</b>bivouacs</div>
+          <div><b>1</b>ferry</div>
+        </div>
+        <span class="trip-link">Voir l'itinéraire complet →</span>
+      </div>
+      <div class="trip-map">
+        <svg viewBox="0 0 200 260" fill="none">
+          <path d="M100 15 C 70 40, 60 70, 75 95 C 85 110, 60 120, 55 145 C 50 170, 75 175, 70 200 C 65 220, 90 230, 95 245" stroke="#a8471f" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round" fill="none"/>
+          <circle cx="100" cy="15" r="4" fill="#c0922f"/>
+          <circle cx="75" cy="95" r="4" fill="#4f6b52"/>
+          <circle cx="55" cy="145" r="4" fill="#4f6b52"/>
+          <circle cx="70" cy="200" r="4" fill="#4f6b52"/>
+          <circle cx="95" cy="245" r="5" fill="#a8471f"/>
+          <text x="112" y="19" font-family="JetBrains Mono, monospace" font-size="9" fill="#7d7364">Édimbourg</text>
+          <text x="20" y="99" font-family="JetBrains Mono, monospace" font-size="9" fill="#7d7364">Glencoe</text>
+          <text x="10" y="149" font-family="JetBrains Mono, monospace" font-size="9" fill="#7d7364">Skye</text>
+          <text x="25" y="204" font-family="JetBrains Mono, monospace" font-size="9" fill="#7d7364">Assynt</text>
+          <text x="107" y="249" font-family="JetBrains Mono, monospace" font-size="9" fill="#7d7364">Cairngorms</text>
+        </svg>
+      </div>
+    </a>
+  </div>
+</section>
+
+<script>
+  var scotlandTarget = new Date('2026-09-01T05:00:00');
+  var scotlandEl = document.getElementById('scotlandCountdown');
+  function updateScotlandCountdown(){
+    var now = new Date();
+    var diff = scotlandTarget - now;
+    if(diff <= 0){
+      scotlandEl.textContent = '🚐 On est sur la route !';
+      return;
+    }
+    var days = Math.floor(diff / (1000*60*60*24));
+    scotlandEl.textContent = '🗓 Départ dans ' + days + ' jours';
+  }
+  updateScotlandCountdown();
+  setInterval(updateScotlandCountdown, 3600000);
+</script>
 
 <section class="resources">
   <div class="wrap">

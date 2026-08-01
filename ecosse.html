@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road Trip Écosse — Sept. 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-card:#faf9f6;
+    --bg-card-alt:#f2ede4;
+    --border:#e8e2d6;
+    --text:#3a352e;
+    --text-dim:#7d7364;
+    --peach:#eec39c;
+    --peach-text:#bd7a42;
+    --lavender:#d3c0e3;
+    --lavender-text:#8f6ca8;
+    --blue:#b7d9e2;
+    --blue-text:#4f889b;
+    --amber:var(--peach-text);
+    --heather:var(--lavender-text);
+    --loch:var(--blue-text);
+    --line: repeating-linear-gradient(180deg, var(--border), var(--border) 6px, transparent 6px, transparent 12px);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(183,217,226,0.35), transparent),
+      radial-gradient(ellipse 700px 500px at 100% 20%, rgba(211,192,227,0.28), transparent);
+  }
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px 100px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:70px 0 40px;
+    text-align:left;
+    border-bottom:1px solid var(--border);
+    margin-bottom:44px;
+    position:relative;
+  }
+  .hero .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--amber);
+    margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero .eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);display:inline-block;}
+  .hero h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(38px,6vw,64px);
+    line-height:1.02;
+    margin:0 0 18px;
+    letter-spacing:-.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--heather);
+  }
+  .hero p.lede{
+    max-width:520px;
+    color:var(--text-dim);
+    font-size:16px;
+    margin:0 0 30px;
+  }
+  .stat-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0;
+    border-top:1px solid var(--border);
+  }
+  .stat{
+    flex:1 1 120px;
+    padding:16px 18px 0;
+    border-right:1px solid var(--border);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .num{
+    font-family:'Fraunces',serif;
+    font-size:30px;
+    color:var(--amber);
+    display:block;
+  }
+  .stat .label{
+    font-size:12px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+  }
+
+  /* ---------- CHECKLIST ---------- */
+  .section-title{
+    font-family:'Fraunces',serif;
+    font-size:22px;
+    font-weight:600;
+    margin:0 0 18px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  .section-title .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--text);
+    background:var(--peach);
+    padding:2px 7px;
+    border-radius:3px;
+    letter-spacing:.04em;
+  }
+  .checklist{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:10px;
+    margin-bottom:56px;
+  }
+  .checklist li{
+    list-style:none;
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:12px 14px;
+    font-size:14px;
+    color:var(--text-dim);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .checklist li::before{
+    content:"○";
+    color:var(--amber);
+    font-size:15px;
+  }
+  .checklist a{color:var(--loch);}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{position:relative;padding-left:36px;}
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:9px; top:6px; bottom:6px;
+    width:2px;
+    background:var(--line);
+  }
+
+  .day{
+    position:relative;
+    margin-bottom:34px;
+  }
+  .day::before{
+    content:"";
+    position:absolute;
+    left:-36px;
+    top:6px;
+    width:16px;height:16px;
+    border-radius:50%;
+    background:var(--bg-card-alt);
+    border:2px solid var(--border);
+  }
+  .day.overnight::before{
+    background:var(--peach);
+    border-color:var(--peach-text);
+    box-shadow:0 0 0 4px rgba(238,195,156,0.35);
+  }
+
+  .day-card{
+    background:var(--bg-card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px 24px;
+  }
+  .day-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:6px 16px;
+    margin-bottom:10px;
+  }
+  .day-head h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:21px;
+    margin:0;
+  }
+  .day-date{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--text-dim);
+    white-space:nowrap;
+    padding-top:5px;
+  }
+  .day-sub{
+    font-size:13px;
+    color:var(--heather);
+    margin:-4px 0 14px;
+    font-weight:500;
+  }
+
+  .drive{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:var(--loch);
+    background:rgba(183,217,226,0.30);
+    border:1px solid rgba(183,217,226,0.55);
+    border-radius:7px;
+    padding:9px 12px;
+    margin-bottom:12px;
+  }
+  .drive span.ico{flex-shrink:0;}
+
+  .activities{margin:0 0 14px;padding:0;list-style:none;}
+  .activities li{
+    padding:5px 0 5px 20px;
+    position:relative;
+    font-size:14.5px;
+  }
+  .activities li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--text-dim);
+  }
+  .activities li .warn{color:var(--amber);}
+  .activities a{color:var(--loch);text-decoration:none;border-bottom:1px dotted var(--loch);}
+  .activities a:hover{color:var(--text);}
+
+  .night-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--bg-card-alt);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:12px 14px;
+    margin-top:14px;
+  }
+  .night-box .moon{
+    font-size:18px;
+    flex-shrink:0;
+  }
+  .night-box .night-text{font-size:13.5px;line-height:1.5;}
+  .night-box .night-text b{color:var(--text);}
+  .night-box a{
+    color:var(--amber);
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    text-decoration:none;
+    border-bottom:1px dotted var(--amber);
+  }
+  .night-alt{color:var(--text-dim);font-size:12px;margin-top:2px;}
+
+  /* multi-night pill */
+  .nights-pill{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--text);
+    background:var(--lavender);
+    padding:2px 8px;
+    border-radius:20px;
+    margin-left:8px;
+    vertical-align:middle;
+  }
+
+  /* ---------- BONUS ---------- */
+  .bonus{
+    margin-top:56px;
+    background:var(--bg-card);
+    border:1px dashed var(--border);
+    border-radius:12px;
+    padding:24px 26px;
+  }
+  .bonus p.intro{color:var(--text-dim);font-size:14px;margin-top:0;}
+  .bonus-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:16px;
+  }
+  .bonus-item h4{
+    font-family:'Fraunces',serif;
+    font-size:16px;
+    margin:0 0 4px;
+    color:var(--heather);
+  }
+  .bonus-item p{
+    font-size:13px;
+    color:var(--text-dim);
+    margin:0;
+  }
+
+  footer{
+    margin-top:60px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+    color:var(--text-dim);
+    font-size:12.5px;
+    font-family:'JetBrains Mono',monospace;
+  }
+
+  @media(max-width:600px){
+    .timeline{padding-left:26px;}
+    .day::before{left:-26px;}
+    .day-card{padding:18px 16px;}
+    .stat{padding:14px 12px 0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav style="display:flex; justify-content:space-between; align-items:center; padding:24px 0 0; font-family:'JetBrains Mono',monospace; font-size:13px;">
+    <a href="index.html" style="color:var(--loch); text-decoration:none; display:flex; align-items:center; gap:8px;">&larr; retour au carnet</a>
+    <a href="index.html" style="display:flex; align-items:center; gap:9px; text-decoration:none; color:var(--text-dim); font-family:'Fraunces',serif; font-style:italic;">
+      <img src="avatar.jpg" alt="Sacha et Fiona" style="width:30px; height:30px; border-radius:50%; object-fit:cover; border:1.5px solid var(--peach-text);">
+      road2steeve
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">VW California T6 · Belgique → Écosse</div>
+    <div id="countdown-badge" style="font-family:'JetBrains Mono',monospace; font-size:13px; background:var(--lavender); color:var(--heather); display:inline-block; padding:5px 14px; border-radius:20px; margin-bottom:18px;">Chargement...</div>
+    <h1>Road trip<br><em>Highlands</em> &amp; ferry</h1>
+    <p class="lede">Deux semaines en camping-car, du Calais–Douvres jusqu'aux confins de l'Assynt et de Durness, avant de redescendre par les Cairngorms. 1<sup>er</sup> → 14 septembre.</p>
+    <div class="stat-row">
+      <div class="stat"><span class="num">14</span><span class="label">jours</span></div>
+      <div class="stat"><span class="num">13</span><span class="label">nuits</span></div>
+      <div class="stat"><span class="num">9</span><span class="label">lieux de bivouac</span></div>
+      <div class="stat"><span class="num">1</span><span class="label">ferry — Irish Ferries</span></div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST -->
+  <div class="section-title">Avant de partir <span class="tag">CHECK</span></div>
+  <ul class="checklist">
+    <li>📚 Échanger les livres avant le départ</li>
+    <li>🛂 Passeport</li>
+    <li>📄 Visa</li>
+    <li>🔌 Adaptateur prise UK</li>
+    <li>🔊 Baffle</li>
+    <li>🚢 <a href="https://www.irishferries.com/fr/Travel-to-Britain/" target="_blank">Ferry Calais–Douvres (Irish Ferries)</a></li>
+  </ul>
+
+  <!-- TIMELINE -->
+  <div class="section-title">L'itinéraire, jour par jour <span class="tag">J1 → J14</span></div>
+
+  <div class="timeline">
+
+    <!-- JOUR 1 -->
+    <div class="day overnight">
+      <div class="day-card">
+        <div class="day-head">
+          <h3>Belgique → Calais → Douvres → York</h3>
+          <span class="day-date">MAR 1 SEPT</span>
+        </div>
+        <div class="day-sub">Jour de transit — direction l'Angleterre</div>
+        <div class="drive"><span class="ico">🚐</span> Départ de Senenne 5h00 &nbsp;·&nbsp; Arrivée au port de Calais 7h50 &nbsp;·&nbsp; ⛴ Embarquement ferry 8h50 &nbsp;·&nbsp; Arrivée Douvres ~11h20 &nbsp;·&nbsp; 🚐 Douvres → York 4h55, arrivée ~16h15</div>
+        <ul class="activities">
+          <li>Objectif de la journée : rejoindre York pour une nuit-étape avant le grand saut vers l'Écosse.</li>
+          <li>Départ calculé pour être au port 1h avant l'embarquement (2h50 de route depuis Senenne).</li>
+        </ul>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>Nuit à York</b><br>halte étape, pas de spot précisé.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOURS 2-3 -->
+    <div class="day overnight">
+      <div class="day-card">
+        <div class="day-head">
+          <h3>Édimbourg <span class="nights-pill">2 nuits</span></h3>
+          <span class="day-date">MER 2 → VEN 4 SEPT</span>
+        </div>
+        <div class="day-sub">Route depuis York : 4h15</div>
+        <ul class="activities">
+          <li>Château d'Édimbourg</li>
+          <li>Royal Mile &amp; Victoria Street</li>
+          <li>Calton Hill — coucher de soleil</li>
+          <li>Arthur's Seat — randonnée 2 à 3h</li>
+          <li>Dean Village &amp; Circus Lane</li>
+          <li>Grassmarket — idéal pour une soirée</li>
+          <li>Leith et son port</li>
+        </ul>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>2 nuits à Édimbourg</b>, centre-ville</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOURS 4-5 -->
+    <div class="day overnight">
+      <div class="day-card">
+        <div class="day-head">
+          <h3>Glencoe <span class="nights-pill">2 nuits</span></h3>
+          <span class="day-date">VEN 4 → DIM 6 SEPT</span>
+        </div>
+        <div class="day-sub">Départ Édimbourg → Glencoe : 2h30</div>
+        <ul class="activities">
+          <li>Randonnée Lost Valley — le matin</li>
+          <li>Randonnée Three Sisters — l'après-midi</li>
+          <li>Buachaille Etive Mòr — point de vue &amp; petite rando au rocher</li>
+          <li>Loch Achtriochtan au coucher de soleil</li>
+          <li>Aller-retour vers Glen Etive pour voir les cerfs, <span class="warn">fin d'aprem ou 6h du matin</span> (à faire le 4 en arrivant si l'horaire le permet)</li>
+          <li>Tout est proche du camping-car : les activités se font dans l'ordre qui arrange</li>
+        </ul>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>Nuit du 4 :</b> <a href="https://park4night.com/fr/place/15621" target="_blank">spot #15621</a> (30 min du centre)<br>
+          ou <a href="https://park4night.com/fr/place/15077" target="_blank">spot #15077</a> (40 min, moins cher, plus chouette)
+          <div class="night-alt"><b>Nuit du 5 :</b> <a href="https://park4night.com/fr/place/63549" target="_blank">spot #63549</a> ou <a href="https://park4night.com/fr/place/125357" target="_blank">spot #125357</a></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOUR 6 -->
+    <div class="day overnight">
+      <div class="day-card">
+        <div class="day-head">
+          <h3>Glenfinnan → Île de Skye</h3>
+          <span class="day-date">DIM 6 SEPT</span>
+        </div>
+        <div class="day-sub">Départ Glencoe : 3h09 jusqu'à Skye</div>
+        <ul class="activities">
+          <li>Steall Falls — <a href="https://www.alltrails.com/trail/scotland/highlands/steall-falls-path" target="_blank">rando 3 km</a>, 50 min de route</li>
+          <li>Viaduc de Glenfinnan (Harry Potter) — 40 min de route. <span class="warn">Vérifier la veille l'horaire du Jacobite Steam Train</span> pour voir passer le Poudlard Express — <a href="https://www.augoutdemma.be/158471-viaduc-de-glenfinnan-comment-voir-le-poudlard-express-en-ecosse" target="_blank">infos ici</a></li>
+          <li>Puis environ 3h de route jusqu'à l'île de Skye</li>
+        </ul>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>Nuit sur Skye</b> — <a href="https://park4night.com/lieu/47983/" target="_blank">spot #47983</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOURS 7-8 -->
+    <div class="day overnight">
+      <div class="day-card">
+        <div class="day-head">
+          <h3>Île de Skye <span class="nights-pill">2 nuits</span></h3>
+          <span class="day-date">LUN 7 → MAR 9 SEPT</span>
+        </div>
+        <div class="day-sub">Jour 7 — nord de l'île</div>
+        <ul class="activities">
+          <li>Quiraing — randonnée ± 2h</li>
+          <li>Old Man of Storr — randonnée ± 2h</li>
+          <li>Lealt Falls — rando</li>
+          <li>Kilt Rock — arrêt photo</li>
+          <li>Sortie en mer : <a href="https://seaskye.com/hebridean-sea-explorer/" target="_blank">Hebridean Sea Explorer</a></li>
+        </ul>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>Nuit du 7 :</b> soirée à Portree — <a href="https://park4night.com/fr/place/63504" target="_blank">spot #63504</a></div>
+        </div>
+        <div class="day-sub" style="margin-top:18px;">Jour 8 — sud de l'île</div>
+        <ul class="activities">
+          <li>Fairy Pools — rando, 40 min de route</li>
+          <li>Talisker Beach — 28 min</li>
+          <li>Port Elgol — 1h10, l'un des meilleurs spots pour voir les phoques se reposer sur les rochers</li>
+          <li>Coucher de soleil à Elgol</li>
+        </ul>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>Nuit du 8 :</b> à Elgol — <a href="https://park4night.com/fr/place/619210" target="_blank">spot #619210</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOUR 9 -->
+    <div class="day overnight">
+      <div class="day-card">
+        <div class="day-head">
+          <h3>Applecross &amp; Torridon</h3>
+          <span class="day-date">MAR 9 SEPT</span>
+        </div>
+        <div class="drive"><span class="ico">🚐</span> 2h30 jusqu'à Glen Torridon &nbsp;·&nbsp; 🚐 puis 1h30 vers Ullapool</div>
+        <ul class="activities">
+          <li>Randonnée à Glen Torridon — environ 2h</li>
+        </ul>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>Nuit vers Ullapool</b> — <a href="https://park4night.com/fr/place/34572" target="_blank">spot #34572</a> ou <a href="https://park4night.com/fr/place/139849" target="_blank">spot #139849</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOUR 10 -->
+    <div class="day overnight">
+      <div class="day-card">
+        <div class="day-head">
+          <h3>Assynt</h3>
+          <span class="day-date">MER 10 SEPT</span>
+        </div>
+        <div class="day-sub">30 min d'Ullapool</div>
+        <ul class="activities">
+          <li>⭐ Stac Pollaidh — randonnée incontournable, 5 km</li>
+          <li>Ardvreck Castle</li>
+          <li>Achmelvich Beach</li>
+          <li>Lochinver et son port</li>
+        </ul>
+        <div class="drive"><span class="ico">🚐</span> 1h30 de route vers Durness</div>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>Nuit à Durness</b> — <a href="https://park4night.com/fr/place/25245" target="_blank">spot #25245</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOUR 11 -->
+    <div class="day overnight">
+      <div class="day-card">
+        <div class="day-head">
+          <h3>Durness</h3>
+          <span class="day-date">JEU 11 SEPT</span>
+        </div>
+        <ul class="activities">
+          <li>Balnakeil Beach — 5 min en van, 30 min à pied</li>
+          <li>Smoo Cave — 10 min de la plage, visite à pied ou en bateau, l'après-midi. <span class="warn">Pas de réservation à l'avance — prévoir de l'argent liquide</span> — <a href="https://smoocavetours.com/what-to-expect/" target="_blank">infos</a></li>
+        </ul>
+        <div class="drive"><span class="ico">🚐</span> 2h de route vers Dornoch</div>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>Nuit à Dornoch</b> — <a href="https://park4night.com/fr/place/34838" target="_blank">spot #34838</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOUR 12 -->
+    <div class="day overnight">
+      <div class="day-card">
+        <div class="day-head">
+          <h3>Cairngorms &amp; Loch Ness</h3>
+          <span class="day-date">VEN 12 SEPT</span>
+        </div>
+        <div class="drive"><span class="ico">🚐</span> environ 1h38 de route</div>
+        <ul class="activities">
+          <li>Chanonry Point — arrêt avant Loch Ness pour observer les dauphins</li>
+          <li>Loch Ness — le matin</li>
+          <li>Puis 1h30 vers les Cairngorms</li>
+          <li><a href="https://www.cairngormreindeer.co.uk/hill-trips/" target="_blank">Troupeau de rennes des Cairngorms</a> l'après-midi — <span class="warn">réserver 30 jours à l'avance</span></li>
+          <li>Urquhart Castle</li>
+          <li>Cairngorms National Park &amp; Loch Morlich</li>
+        </ul>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>Nuit vers les Cairngorms</b> — <a href="https://park4night.com/fr/place/305861" target="_blank">spot #305861</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOURS 13-14 -->
+    <div class="day">
+      <div class="day-card">
+        <div class="day-head">
+          <h3>Retour vers Douvres</h3>
+          <span class="day-date">SAM 13 → DIM 14 SEPT</span>
+        </div>
+        <div class="drive"><span class="ico">🚐</span> 6 à 7h de route avec arrêt, le 13</div>
+        <ul class="activities">
+          <li>Le 14 : reprise de la route pour arriver au port de Douvres avant l'embarquement</li>
+          <li>⛴ Ferry retour Douvres → Calais : départ 17h50, arrivée ~20h20</li>
+          <li>🚐 Calais → Senenne : 2h50, arrivée à la maison ~23h10</li>
+        </ul>
+        <div class="night-box">
+          <span class="moon">🌙</span>
+          <div class="night-text"><b>Nuit du 13 :</b> étape libre sur la route du retour, non définie</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BONUS -->
+  <div class="bonus">
+    <div class="section-title" style="margin-bottom:2px;">Idées bonus <span class="tag">À CASER</span></div>
+    <p class="intro">Repérées dans les notes de préparation mais pas encore placées dans le planning — à glisser si le timing le permet, selon leur position sur la route.</p>
+    <div class="bonus-grid">
+      <div class="bonus-item">
+        <h4>Eilean Donan Castle</h4>
+        <p>Sur la route entre Glenfinnan et Skye — jour 6.</p>
+      </div>
+      <div class="bonus-item">
+        <h4>Fairy Glen</h4>
+        <p>Près d'Uig, nord de Skye — jours 7-8.</p>
+      </div>
+      <div class="bonus-item">
+        <h4>Duncansby Stacks</h4>
+        <p>Pointe nord-est, vers John o'Groats — à combiner avec Durness/Dornoch.</p>
+      </div>
+      <div class="bonus-item">
+        <h4>Dunnottar Castle</h4>
+        <p>Près d'Aberdeen — envisageable sur la descente du 13.</p>
+      </div>
+      <div class="bonus-item">
+        <h4>Balmoral Castle</h4>
+        <p>Cairngorms / Royal Deeside — sur la route du retour.</p>
+      </div>
+      <div class="bonus-item">
+        <h4>Kerrera Island</h4>
+        <p>Près d'Oban — plutôt un détour ouest, à voir si le temps le permet le 13.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>road trip écosse · 1—14 septembre · vw california t6 · park4night + alltrails</footer>
+
+</div>
+<script>
+  var target = new Date('2026-09-01T05:00:00');
+  var el = document.getElementById('countdown-badge');
+  function updateCountdown(){
+    var now = new Date();
+    var diff = target - now;
+    if(diff <= 0){
+      el.textContent = '🚐 On est sur la route !';
+      return;
+    }
+    var days = Math.floor(diff / (1000*60*60*24));
+    var hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    el.textContent = '🗓 Départ dans ' + days + ' jours et ' + hours + 'h';
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+</script>
+</body>
+</html>
