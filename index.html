@@ -388,7 +388,7 @@
     <div class="map-head">
       <div class="eyebrow">Sur la carte</div>
       <h2>Où on a déjà été</h2>
-      <p>Clique sur un point pour retrouver le carnet correspondant.</p>
+      <p>Clique sur un trajet pour retrouver le carnet correspondant. Les pointillés représentent les trajets en avion entre chaque aventure.</p>
     </div>
     <div id="europe-map"></div>
     <div class="map-legend">
@@ -401,101 +401,177 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-  var map = L.map('europe-map', { scrollWheelZoom:false }).setView([48.5, 8.5], 4);
+  var map = L.map('europe-map', { scrollWheelZoom:false }).setView([46.5, 8.5], 4);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom:18,
     attribution:''
   }).addTo(map);
 
   var rust = '#a8471f';
-  function pin(lat, lng, label, url){
-    var marker = L.circleMarker([lat,lng], {
-      radius:8, color:'#eee7d6', weight:2, fillColor:rust, fillOpacity:1
-    }).addTo(map);
-    marker.bindPopup('<a href="'+url+'">'+label+'</a>');
-  }
+  var moss = '#4f6b52';
+  var home = {lat:50.29, lng:5.10};
 
-  // Belgique — base
-  pin(50.4, 4.9, "🏠 Spontin, notre point de départ", "#");
-  // Londres
-  pin(51.5074, -0.1278, "🇬🇧 Londres — Escapade 48h", "london.html");
-  // GR34 + Paris
-  pin(48.60, -2.35, "🇫🇷 GR34, sentier des douaniers", "gr34.html");
-  pin(48.8566, 2.3522, "🇫🇷 Paris", "gr34.html");
-  // Ibiza
-  pin(38.9067, 1.4206, "🇪🇸 Ibiza", "ibiza.html");
-  // Tenerife
-  pin(28.0916, -16.7297, "🇪🇸 Tenerife", "tenerife.html");
-  // Dolomites
-  pin(46.5405, 12.1357, "🇮🇹 Dolomites", "dolomites.html");
-  // Tchéquie / Pologne / Slovaquie
-  pin(50.0755, 14.4378, "🇨🇿 Prague", "czpolsk.html");
-  pin(49.10, 19.60, "🇸🇰 Low Tatras", "czpolsk.html");
-  pin(50.0647, 19.9450, "🇵🇱 Cracovie", "czpolsk.html");
-
-  // ---------- Animation du trajet chronologique ----------
-  var journey = [
-    {lat:50.29, lng:5.10},   // Spontin — départ
-    {lat:51.5074, lng:-0.1278}, // Londres (juin 2024)
-    {lat:48.60, lng:-2.35},  // GR34, Bretagne (juin 2025)
-    {lat:48.8566, lng:2.3522}, // Paris
-    {lat:46.5405, lng:12.1357}, // Dolomites (sept 2025)
-    {lat:28.0916, lng:-16.7297}, // Tenerife (oct 2025)
-    {lat:38.9067, lng:1.4206}, // Ibiza (mars 2026)
-    {lat:50.0755, lng:14.4378}, // Prague (juin 2026)
-    {lat:49.10, lng:19.60},   // Low Tatras
-    {lat:50.0647, lng:19.9450}, // Cracovie
-    {lat:50.29, lng:5.10}     // retour Spontin
+  // Trajets réels, reconstruits dans l'ordre exact de chaque carnet
+  var trips = [
+    {
+      key:'london', url:'london.html', label:"🇬🇧 Londres — Escapade 48h", date:'2024-06-25',
+      points:[
+        [51.5029,-0.1346], // St James's Park
+        [51.5117,-0.1308], // Chinatown
+        [51.5007,-0.1246], // Big Ben
+        [51.5142,-0.1955], // Notting Hill
+        [51.5136,-0.1319], // Soho
+        [51.5055,-0.0754]  // Tower Bridge
+      ]
+    },
+    {
+      key:'gr34', url:'gr34.html', label:"🇫🇷 GR34, sentier des douaniers + Paris", date:'2025-06-27',
+      points:[
+        [48.6497,-2.1600], // Lancieux, départ GR34
+        [48.5975,-2.1436], // Saint-Jacut-de-la-Mer
+        [48.6325,-2.2467], // Saint-Cast-le-Guildo
+        [48.6836,-2.3247], // Cap Fréhel
+        [48.6386,-2.4711], // Erquy
+        [48.5142,-2.7653], // Saint-Brieuc
+        [48.8566, 2.3522]  // Paris
+      ]
+    },
+    {
+      key:'dolomites', url:'dolomites.html', label:"🇮🇹 Dolomites — 10 jours en van", date:'2025-09-01',
+      points:[
+        [50.4674, 4.8720],  // Namur, point de départ
+        [48.7758, 9.1829],  // Stuttgart / Memmingen, étape jour 1
+        [46.5499,11.6297], // Alpe di Siusi
+        [46.4064,11.5972], // Lago di Carezza
+        [46.5216,11.7508], // Piz Sella
+        [46.5405,12.1357], // Cortina
+        [46.6959,12.0857], // Lago di Braies
+        [46.6183,12.3025], // Tre Cime
+        [46.5411,12.2312], // Lago di Sorapis
+        [46.2925,11.4606], // Cavalese, rafting
+        [50.4674, 4.8720]  // Retour à Namur
+      ]
+    },
+    {
+      key:'tenerife', url:'tenerife.html', label:"🇪🇸 Tenerife en famille", date:'2025-10-27',
+      points:[
+        [28.0916,-16.7297], // Adeje
+        [28.0809,-16.7266], // Siam Park
+        [28.2723,-16.6423], // Teide
+        [28.0567,-16.7292], // Playa de las Américas
+        [28.2975,-16.8225]  // Masca
+      ]
+    },
+    {
+      key:'ibiza', url:'ibiza.html', label:"🇪🇸 Ibiza", date:'2026-03-16',
+      points:[
+        [38.9805,1.3042], // Sant Antoni
+        [38.9067,1.4206], // Eivissa
+        [39.0106,1.5680], // Punta Arabí
+        [38.8917,1.4189], // Ushuaïa
+        [38.7340,1.4160]  // Formentera
+      ]
+    },
+    {
+      key:'czpolsk', url:'czpolsk.html', label:"🇨🇿🇵🇱🇸🇰 Tchéquie · Pologne · Slovaquie — 3171 km", date:'2026-06-27',
+      points:[
+        [50.2900,5.1000],  // Ciney
+        [49.4521,11.0767], // Nuremberg
+        [50.0755,14.4378], // Prague
+        [49.9479,15.2681], // Kutná Hora
+        [49.3811,16.7239], // Punkva
+        [49.1000,19.6000], // Low Tatras
+        [49.4267,19.8467], // Czarny Dunajec
+        [50.0647,19.9450], // Cracovie
+        [49.9836,20.0553], // Wieliczka
+        [50.0349,19.2013], // Oświęcim
+        [51.1079,17.0385], // Wrocław
+        [50.5967,16.1108], // Adršpach
+        [50.6167,15.1667], // Malá Skála
+        [50.9686,14.0997], // Lohmen
+        [50.2600,4.9110]   // Dinant
+      ]
+    }
   ];
 
-  var routeLine = L.polyline([], {color: rust, weight:2.5, dashArray:'6 6', opacity:0.85}).addTo(map);
+  // Point de départ / retour
+  L.circleMarker([home.lat, home.lng], {radius:7, color:'#eee7d6', weight:2, fillColor:moss, fillOpacity:1}).addTo(map).bindPopup("🏠 Spontin, notre point de départ");
+
+  // Une polyline (vide au départ) + un marqueur de début/fin par trajet, remplis pendant l'animation
+  trips.forEach(function(trip){
+    trip.line = L.polyline([], {color: rust, weight:3.5, opacity:0.9, lineCap:'round'}).addTo(map);
+    trip.line.bindPopup('<a href="'+trip.url+'">'+trip.label+'</a>');
+  });
+
+  // Connecteurs fins en pointillés entre les trajets (trajet aérien, pas une vraie route)
+  var connectorLine = L.polyline([], {color: moss, weight:1.5, opacity:0.6, dashArray:'2 7'}).addTo(map);
 
   var vanIcon = L.divIcon({
     html:'<div class="van-icon">🚐</div>',
     className:'', iconSize:[24,24], iconAnchor:[12,12]
   });
-  var vanMarker = L.marker([journey[0].lat, journey[0].lng], {icon:vanIcon, zIndexOffset:1000}).addTo(map);
-
-  var STEPS_PER_SEGMENT = 26;
-  var INTERVAL_MS = 22;
-  var animTimer = null;
+  var vanMarker = L.marker([home.lat, home.lng], {icon:vanIcon, zIndexOffset:1000}).addTo(map);
 
   function bearing(a, b){
-    var dy = b.lat - a.lat, dx = b.lng - a.lng;
+    var dy = b[0] - a[0], dx = b[1] - a[1];
     return Math.atan2(dx, dy) * 180 / Math.PI;
+  }
+  function rotateVan(ang){
+    var el = vanMarker.getElement();
+    if(el){
+      var inner = el.querySelector('.van-icon');
+      if(inner) inner.style.transform = 'rotate(' + ang + 'deg)';
+    }
+  }
+
+  var STEPS = 22, INTERVAL_MS = 16;
+  var animTimer = null;
+
+  // Construit la liste ordonnée de segments à animer : [connecteur, trajet, connecteur, trajet, ...]
+  function buildSegments(){
+    var segs = [];
+    var cursor = [home.lat, home.lng];
+    trips.forEach(function(trip){
+      segs.push({type:'connector', from:cursor, to:trip.points[0]});
+      for(var i=0; i<trip.points.length-1; i++){
+        segs.push({type:'route', trip:trip, from:trip.points[i], to:trip.points[i+1]});
+      }
+      cursor = trip.points[trip.points.length-1];
+    });
+    segs.push({type:'connector', from:cursor, to:[home.lat, home.lng]});
+    return segs;
   }
 
   function runJourneyAnimation(){
     if(animTimer) clearInterval(animTimer);
-    routeLine.setLatLngs([]);
-    var pathPoints = [];
-    var segIndex = 0, stepInSeg = 0;
+    trips.forEach(function(t){ t.line.setLatLngs([]); });
+    connectorLine.setLatLngs([]);
+    var connectorPts = [];
+    var segs = buildSegments();
+    var segIdx = 0, step = 0;
 
     animTimer = setInterval(function(){
-      if(segIndex >= journey.length - 1){
-        clearInterval(animTimer);
-        return;
+      if(segIdx >= segs.length){ clearInterval(animTimer); return; }
+      var seg = segs[segIdx];
+      var t = step / STEPS;
+      var lat = seg.from[0] + (seg.to[0]-seg.from[0]) * t;
+      var lng = seg.from[1] + (seg.to[1]-seg.from[1]) * t;
+
+      if(seg.type === 'connector'){
+        connectorPts.push([lat,lng]);
+        connectorLine.setLatLngs(connectorPts);
+      } else {
+        var current = seg.trip.line.getLatLngs();
+        current.push([lat,lng]);
+        seg.trip.line.setLatLngs(current);
       }
-      var a = journey[segIndex], b = journey[segIndex+1];
-      var t = stepInSeg / STEPS_PER_SEGMENT;
-      var lat = a.lat + (b.lat - a.lat) * t;
-      var lng = a.lng + (b.lng - a.lng) * t;
+      vanMarker.setLatLng([lat,lng]);
+      rotateVan(bearing(seg.from, seg.to));
 
-      pathPoints.push([lat, lng]);
-      routeLine.setLatLngs(pathPoints);
-      vanMarker.setLatLng([lat, lng]);
-
-      var ang = bearing(a, b);
-      var el = vanMarker.getElement();
-      if(el){
-        var inner = el.querySelector('.van-icon');
-        if(inner) inner.style.transform = 'rotate(' + ang + 'deg)';
-      }
-
-      stepInSeg++;
-      if(stepInSeg > STEPS_PER_SEGMENT){
-        stepInSeg = 0;
-        segIndex++;
+      step++;
+      if(step > STEPS){
+        step = 0;
+        segIdx++;
       }
     }, INTERVAL_MS);
   }
