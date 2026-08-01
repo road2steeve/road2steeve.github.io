@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="road2steeve" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="51.5029" lon="-0.1346"><name>St James's Park</name></wpt>
+  <wpt lat="51.5117" lon="-0.1308"><name>Chinatown</name></wpt>
+  <wpt lat="51.5007" lon="-0.1246"><name>Big Ben</name></wpt>
+  <wpt lat="51.5142" lon="-0.1955"><name>Notting Hill</name></wpt>
+  <wpt lat="51.5136" lon="-0.1319"><name>Soho</name></wpt>
+  <wpt lat="51.5055" lon="-0.0754"><name>Tower Bridge</name></wpt>
+  <trk>
+    <name>road2steeve — Londres</name>
+    <trkseg>
+      <trkpt lat="51.5029" lon="-0.1346"></trkpt>
+      <trkpt lat="51.5117" lon="-0.1308"></trkpt>
+      <trkpt lat="51.5007" lon="-0.1246"></trkpt>
+      <trkpt lat="51.5142" lon="-0.1955"></trkpt>
+      <trkpt lat="51.5136" lon="-0.1319"></trkpt>
+      <trkpt lat="51.5055" lon="-0.0754"></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

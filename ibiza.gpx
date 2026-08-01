@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="road2steeve" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="38.9805" lon="1.3042"><name>Sant Antoni de Portmany</name></wpt>
+  <wpt lat="38.9067" lon="1.4206"><name>Eivissa (vieille ville)</name></wpt>
+  <wpt lat="39.0106" lon="1.568"><name>Marche hippie Punta Arabi</name></wpt>
+  <wpt lat="38.8917" lon="1.4189"><name>Ushuaia Ibiza Beach Hotel</name></wpt>
+  <wpt lat="38.734" lon="1.416"><name>Formentera - La Savina</name></wpt>
+  <trk>
+    <name>road2steeve — Ibiza</name>
+    <trkseg>
+      <trkpt lat="38.9805" lon="1.3042"></trkpt>
+      <trkpt lat="38.9067" lon="1.4206"></trkpt>
+      <trkpt lat="39.0106" lon="1.568"></trkpt>
+      <trkpt lat="38.8917" lon="1.4189"></trkpt>
+      <trkpt lat="38.734" lon="1.416"></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

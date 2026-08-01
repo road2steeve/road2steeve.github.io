@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="road2steeve" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="28.0916" lon="-16.7297"><name>Golf del Sur / Adeje</name></wpt>
+  <wpt lat="28.0809" lon="-16.7266"><name>Siam Park</name></wpt>
+  <wpt lat="28.2723" lon="-16.6423"><name>Parc national du Teide</name></wpt>
+  <wpt lat="28.2975" lon="-16.8225"><name>Masca</name></wpt>
+  <wpt lat="28.0567" lon="-16.7292"><name>Playa de las Americas</name></wpt>
+  <trk>
+    <name>road2steeve — Tenerife</name>
+    <trkseg>
+      <trkpt lat="28.0916" lon="-16.7297"></trkpt>
+      <trkpt lat="28.0809" lon="-16.7266"></trkpt>
+      <trkpt lat="28.2723" lon="-16.6423"></trkpt>
+      <trkpt lat="28.2975" lon="-16.8225"></trkpt>
+      <trkpt lat="28.0567" lon="-16.7292"></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

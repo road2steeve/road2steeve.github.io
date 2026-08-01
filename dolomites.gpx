@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="road2steeve" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="46.5499" lon="11.6297"><name>Alpe di Siusi</name></wpt>
+  <wpt lat="46.4064" lon="11.5972"><name>Lago di Carezza</name></wpt>
+  <wpt lat="46.5216" lon="11.7508"><name>Piz Sella / Passo Sella</name></wpt>
+  <wpt lat="46.5405" lon="12.1357"><name>Cortina d'Ampezzo</name></wpt>
+  <wpt lat="46.6959" lon="12.0857"><name>Lago di Braies</name></wpt>
+  <wpt lat="46.6183" lon="12.3025"><name>Tre Cime di Lavaredo</name></wpt>
+  <wpt lat="46.5411" lon="12.2312"><name>Lago di Sorapis</name></wpt>
+  <wpt lat="46.2925" lon="11.4606"><name>Cavalese - rafting Val di Fiemme</name></wpt>
+  <trk>
+    <name>road2steeve — Dolomites</name>
+    <trkseg>
+      <trkpt lat="46.5499" lon="11.6297"></trkpt>
+      <trkpt lat="46.4064" lon="11.5972"></trkpt>
+      <trkpt lat="46.5216" lon="11.7508"></trkpt>
+      <trkpt lat="46.5405" lon="12.1357"></trkpt>
+      <trkpt lat="46.6959" lon="12.0857"></trkpt>
+      <trkpt lat="46.6183" lon="12.3025"></trkpt>
+      <trkpt lat="46.5411" lon="12.2312"></trkpt>
+      <trkpt lat="46.2925" lon="11.4606"></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="road2steeve" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="48.6497" lon="-2.16"><name>Lancieux - depart GR34</name></wpt>
+  <wpt lat="48.5975" lon="-2.1436"><name>Saint-Jacut-de-la-Mer</name></wpt>
+  <wpt lat="48.6325" lon="-2.2467"><name>Saint-Cast-le-Guildo</name></wpt>
+  <wpt lat="48.6836" lon="-2.3247"><name>Cap Frehel / Plevenon</name></wpt>
+  <wpt lat="48.6386" lon="-2.4711"><name>Erquy - Sables-d'Or</name></wpt>
+  <wpt lat="48.5142" lon="-2.7653"><name>Saint-Brieuc</name></wpt>
+  <wpt lat="48.8566" lon="2.3522"><name>Paris</name></wpt>
+  <trk>
+    <name>road2steeve — GR34 + Paris</name>
+    <trkseg>
+      <trkpt lat="48.6497" lon="-2.16"></trkpt>
+      <trkpt lat="48.5975" lon="-2.1436"></trkpt>
+      <trkpt lat="48.6325" lon="-2.2467"></trkpt>
+      <trkpt lat="48.6836" lon="-2.3247"></trkpt>
+      <trkpt lat="48.6386" lon="-2.4711"></trkpt>
+      <trkpt lat="48.5142" lon="-2.7653"></trkpt>
+      <trkpt lat="48.8566" lon="2.3522"></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

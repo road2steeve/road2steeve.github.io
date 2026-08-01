@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="road2steeve" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="50.29" lon="5.1"><name>Ciney</name></wpt>
+  <wpt lat="49.4521" lon="11.0767"><name>Nuremberg</name></wpt>
+  <wpt lat="50.0755" lon="14.4378"><name>Prague</name></wpt>
+  <wpt lat="49.9479" lon="15.2681"><name>Kutna Hora</name></wpt>
+  <wpt lat="49.3811" lon="16.7239"><name>Grottes de Punkva</name></wpt>
+  <wpt lat="49.1" lon="19.6"><name>Low Tatras National Park</name></wpt>
+  <wpt lat="49.4267" lon="19.8467"><name>Czarny Dunajec</name></wpt>
+  <wpt lat="50.0647" lon="19.945"><name>Krakow</name></wpt>
+  <wpt lat="49.9836" lon="20.0553"><name>Mines de sel de Wieliczka</name></wpt>
+  <wpt lat="50.0349" lon="19.2013"><name>Oswiecim - Auschwitz</name></wpt>
+  <wpt lat="51.1079" lon="17.0385"><name>Wroclaw</name></wpt>
+  <wpt lat="50.5967" lon="16.1108"><name>Adrspach</name></wpt>
+  <wpt lat="50.6167" lon="15.1667"><name>Mala Skala</name></wpt>
+  <wpt lat="50.9686" lon="14.0997"><name>Lohmen - pont de Bastei</name></wpt>
+  <wpt lat="50.26" lon="4.911"><name>Dinant</name></wpt>
+  <trk>
+    <name>road2steeve — Tcheque, Pologne, Slovaquie</name>
+    <trkseg>
+      <trkpt lat="50.29" lon="5.1"></trkpt>
+      <trkpt lat="49.4521" lon="11.0767"></trkpt>
+      <trkpt lat="50.0755" lon="14.4378"></trkpt>
+      <trkpt lat="49.9479" lon="15.2681"></trkpt>
+      <trkpt lat="49.3811" lon="16.7239"></trkpt>
+      <trkpt lat="49.1" lon="19.6"></trkpt>
+      <trkpt lat="49.4267" lon="19.8467"></trkpt>
+      <trkpt lat="50.0647" lon="19.945"></trkpt>
+      <trkpt lat="49.9836" lon="20.0553"></trkpt>
+      <trkpt lat="50.0349" lon="19.2013"></trkpt>
+      <trkpt lat="51.1079" lon="17.0385"></trkpt>
+      <trkpt lat="50.5967" lon="16.1108"></trkpt>
+      <trkpt lat="50.6167" lon="15.1667"></trkpt>
+      <trkpt lat="50.9686" lon="14.0997"></trkpt>
+      <trkpt lat="50.26" lon="4.911"></trkpt>
+    </trkseg>
+  </trk>
+</gpx>
