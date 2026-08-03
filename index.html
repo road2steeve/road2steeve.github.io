@@ -169,6 +169,19 @@
     transition: transform 0.1s linear;
   }
 
+  .spot-teaser{
+    display:flex; align-items:center; gap:24px; background:var(--paper-2);
+    border:1px solid var(--line); border-radius:2px; padding:26px 30px; margin-top:16px;
+    text-decoration:none; color:var(--ink); flex-wrap:wrap;
+    transition: box-shadow .18s ease, transform .18s ease;
+  }
+  .spot-teaser:hover{ box-shadow:0 10px 30px rgba(36,50,42,0.14); transform:translateY(-2px); }
+  .spot-teaser img{ width:110px; height:110px; object-fit:cover; border-radius:2px; border:1px solid var(--line); flex:none; }
+  .spot-teaser .txt{ flex:1; min-width:200px; }
+  .spot-teaser h3{ font-family:'Fraunces', serif; font-weight:500; font-size:20px; margin:0 0 6px; }
+  .spot-teaser p{ color:#465046; font-size:14px; margin:0 0 8px; }
+  .spot-teaser .price{ font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--rust-dark); }
+
   /* ---------- UPCOMING TRIPS ---------- */
   .upcoming{ padding:70px 0; border-top:1px solid var(--line); }
   .upcoming .eyebrow{ margin-bottom:14px; }
@@ -812,6 +825,15 @@
           <text x="25" y="204" font-family="JetBrains Mono, monospace" font-size="9" fill="#7d7364">Assynt</text>
           <text x="107" y="249" font-family="JetBrains Mono, monospace" font-size="9" fill="#7d7364">Cairngorms</text>
         </svg>
+      </div>
+    </a>
+
+    <a class="spot-teaser" href="spot.html">
+      <img src="images/spot/spot-03.jpg" alt="Notre spot camping-car à Senenne">
+      <div class="txt">
+        <h3>🚐 On accueille aussi les vans de passage</h3>
+        <p>Un emplacement camping-car & voiture chez nous, à Senenne (Spontin) — celui d'où on part pour tous nos road trips.</p>
+        <span class="price">à partir de 7€ / nuit →</span>
       </div>
     </a>
   </div>

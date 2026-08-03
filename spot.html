@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notre spot van life — Senenne Van Stop — road2steeve</title>
+<meta name="description" content="Emplacement camping-car et voiture chez nous, à Senenne (Spontin), Belgique. 7€/nuit sans électricité, 12€/nuit avec électricité.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<style>
+  :root{
+    --ink:#24322a; --paper:#eee7d6; --paper-2:#e4dcc6;
+    --rust:#a8471f; --rust-dark:#7d3417; --moss:#4f6b52; --gold:#c0922f;
+    --line: rgba(36,50,42,0.18); --max: 820px;
+  }
+  *{box-sizing:border-box;}
+  body{ margin:0; background:var(--paper);
+    background-image: radial-gradient(circle at 1px 1px, rgba(36,50,42,0.07) 1px, transparent 0);
+    background-size: 22px 22px; color:var(--ink); font-family:'Work Sans', sans-serif; line-height:1.65; }
+  a{color:inherit;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  nav{ padding:26px 0; border-bottom:1px solid var(--line); }
+  nav .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .back{ font-family:'JetBrains Mono', monospace; font-size:13px; text-decoration:none; color:var(--rust-dark); display:flex; align-items:center; gap:8px; }
+  .brand{ font-family:'Fraunces', serif; font-style:italic; font-weight:500; font-size:15px; color:var(--moss); text-decoration:none; display:flex; align-items:center; gap:9px; }
+  .brand img{ width:30px; height:30px; border-radius:50%; object-fit:cover; border:1.5px solid var(--rust); }
+
+  .head{ padding:60px 0 36px; }
+  .eyebrow{ font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--rust-dark); display:flex; align-items:center; gap:10px; margin-bottom:22px; }
+  .eyebrow::before{ content:""; width:26px; height:1px; background:var(--rust-dark); display:inline-block; }
+  h1{ font-family:'Fraunces', serif; font-weight:500; font-size: clamp(32px, 6vw, 52px); line-height:1.05; margin:0 0 18px; }
+  h1 em{ font-style:italic; font-weight:400; color:var(--rust); }
+  .lede{ color:#465046; font-size:16.5px; max-width:560px; margin:0 0 10px; }
+
+  .gallery{ display:grid; grid-template-columns:1.4fr 1fr 1fr; grid-template-rows:1fr 1fr; gap:10px; margin:32px 0 48px; }
+  .gallery img{ width:100%; height:100%; object-fit:cover; border-radius:2px; border:1px solid var(--line); display:block; }
+  .gallery a:first-child{ grid-row:span 2; }
+  .gallery img{ aspect-ratio:1/1; }
+  .gallery a:first-child img{ aspect-ratio:auto; height:100%; }
+  @media (max-width:640px){ .gallery{ grid-template-columns:1fr 1fr; grid-template-rows:auto; } .gallery a:first-child{ grid-column:span 2; } .gallery a:first-child img{ aspect-ratio:16/10; } }
+
+  .price-row{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px; }
+  .price-card{
+    flex:1; min-width:200px; background:var(--paper-2); border:1px solid var(--line); border-radius:2px;
+    padding:24px 26px;
+  }
+  .price-card .amount{ font-family:'Fraunces', serif; font-weight:500; font-size:38px; color:var(--rust); }
+  .price-card .amount span{ font-size:15px; font-family:'JetBrains Mono', monospace; color:var(--moss); }
+  .price-card .label{ font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--moss); text-transform:uppercase; letter-spacing:0.05em; margin-top:6px; }
+
+  .block{ padding:44px 0; border-top:1px dashed var(--line); }
+  .block h2{ font-family:'Fraunces', serif; font-weight:500; font-size:24px; margin:0 0 16px; }
+  .block p{ color:#3a453e; font-size:16px; margin:0 0 14px; }
+
+  .steps{ list-style:none; margin:0; padding:0; counter-reset:step; }
+  .steps li{ counter-increment:step; padding-left:36px; position:relative; margin-bottom:14px; font-size:15px; color:#3a453e; }
+  .steps li::before{
+    content:counter(step); position:absolute; left:0; top:-1px;
+    width:24px; height:24px; border-radius:50%; border:1.5px solid var(--rust); color:var(--rust);
+    font-family:'JetBrains Mono', monospace; font-size:12px; display:flex; align-items:center; justify-content:center;
+  }
+
+  .contact-grid{ display:flex; gap:16px; flex-wrap:wrap; margin-top:8px; }
+  .contact-pill{
+    font-family:'JetBrains Mono', monospace; font-size:13.5px;
+    background:var(--paper-2); border:1px solid var(--line); border-radius:20px;
+    padding:9px 16px; text-decoration:none; color:var(--ink); display:inline-flex; align-items:center; gap:8px;
+  }
+  .contact-pill:hover{ border-color:var(--rust); color:var(--rust-dark); }
+
+  #spot-map{ width:100%; height:280px; border-radius:2px; border:1px solid var(--line); margin-top:20px; filter: sepia(12%) saturate(85%); }
+
+  .dl-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:20px; }
+  .dl-btn{
+    font-family:'JetBrains Mono', monospace; font-size:13px;
+    background:var(--rust); color:#fff; text-decoration:none;
+    padding:10px 18px; border-radius:20px;
+  }
+  .dl-btn:hover{ background:var(--rust-dark); }
+  .dl-btn.outline{ background:none; border:1px solid var(--rust); color:var(--rust-dark); }
+  .dl-btn.outline:hover{ background:var(--rust); color:#fff; }
+
+  footer{ border-top:1px solid var(--line); padding:34px 0 50px; font-family:'JetBrains Mono', monospace; font-size:12px; color:#6b6a58; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="back" href="index.html">&larr; retour au carnet</a>
+    <a class="brand" href="index.html"><img src="avatar.jpg" alt="Sacha et Fiona">road2steeve</a>
+  </div>
+</nav>
+
+<header class="head">
+  <div class="wrap">
+    <div class="eyebrow">Notre spot · Senenne, Belgique</div>
+    <h1>On accueille aussi <em>les vans</em> de passage</h1>
+    <p class="lede">Chez nous, à Senenne (Spontin), on a un emplacement camping-car & voiture — celui-là même d'où on part pour tous nos road trips. Une étape simple, calme et abordable si tu passes dans le coin.</p>
+
+    <div class="gallery">
+      <a href="images/spot/spot-03.jpg" target="_blank"><img src="images/spot/spot-03.jpg" alt="Le van garé sur l'emplacement, vue sur la maison en pierre"></a>
+      <a href="images/spot/spot-01.jpg" target="_blank"><img src="images/spot/spot-01.jpg" alt="Vue sur la campagne depuis l'emplacement"></a>
+      <a href="images/spot/spot-05.jpg" target="_blank"><img src="images/spot/spot-05.jpg" alt="Moment de détente sur le spot"></a>
+      <a href="images/spot/spot-06.jpg" target="_blank"><img src="images/spot/spot-06.jpg" alt="L'emplacement vu depuis l'entrée"></a>
+      <a href="images/spot/spot-07.jpg" target="_blank"><img src="images/spot/spot-07.jpg" alt="Coin détente avec vue dégagée"></a>
+    </div>
+
+    <div class="price-row">
+      <div class="price-card">
+        <div class="amount">7€<span> / nuit</span></div>
+        <div class="label">Sans électricité</div>
+      </div>
+      <div class="price-card">
+        <div class="amount">12€<span> / nuit</span></div>
+        <div class="label">Avec électricité</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="block">
+    <h2>Comment réserver</h2>
+    <ol class="steps">
+      <li>Scanne le QR code de l'affiche sur place, ou télécharge-la ci-dessous</li>
+      <li>Remplis le formulaire et joins ta preuve de paiement</li>
+      <li>Tu reçois le code du cadenas par email une fois validé</li>
+      <li>Merci de remettre le cadenas en place à ton départ 🙏</li>
+    </ol>
+    <p>Paiement en espèces possible aussi — contacte-nous directement (coordonnées ci-dessous).</p>
+    <div class="dl-row">
+      <a class="dl-btn" href="spot-poster.pdf" download>📥 Télécharger l'affiche / poster</a>
+      <a class="dl-btn outline" href="https://maps.app.goo.gl/fSA6zNHQceDMj68K8" target="_blank">📍 Voir sur Google Maps</a>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Nous contacter</h2>
+    <p>Une question, ou tu préfères payer en espèces sur place ?</p>
+    <div class="contact-grid">
+      <a class="contact-pill" href="https://wa.me/32472634310" target="_blank">📱 WhatsApp — +32 472 63 43 10</a>
+      <a class="contact-pill" href="#">💬 Messenger — Borsus Sacha</a>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Où c'est</h2>
+    <p>Senenne, à Spontin — pile sur la route entre la France et les Ardennes, un arrêt pratique si tu descends vers le sud de la Belgique ou que tu remontes du Luxembourg.</p>
+    <div id="spot-map"></div>
+  </section>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+  var spotMap = L.map('spot-map', {scrollWheelZoom:false}).setView([50.3183915, 5.0263741], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:18, attribution:''}).addTo(spotMap);
+  L.circleMarker([50.3183915, 5.0263741], {radius:9, color:'#eee7d6', weight:2, fillColor:'#a8471f', fillOpacity:1})
+    .addTo(spotMap)
+    .bindPopup('<a href="https://maps.app.goo.gl/fSA6zNHQceDMj68K8" target="_blank">📍 Senenne Van Stop</a>')
+    .openPopup();
+</script>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
+    <span>© 2026 — road2steeve</span>
+    <a class="back" href="index.html">&larr; retour au carnet</a>
+  </div>
+</footer>
+
+</body>
+</html>
